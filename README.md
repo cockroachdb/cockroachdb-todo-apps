@@ -1,6 +1,6 @@
-Codenewbies and new open source contributors -- help us build our repository of CockroachDB To-Do apps! 
+Code newbies and new open source contributors -- help us build our repository of CockroachDB To-Do apps! 
 
-## Challenge
+## The Challenge
 
 Build a To-Do app using CockroachDB and a language/ORM of your choice!
 
