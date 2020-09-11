@@ -18,9 +18,15 @@ Note for Hacktoberfest participants: The First Contributions repository is the o
 ### Step 1: Set up a local version of this repository on your laptop
 
 1. Click **Fork** to [fork this repository](https://guides.github.com/activities/forking/#fork).
-2. [Clone your forked repository to your laptop](https://guides.github.com/activities/forking/#clone). 
-3. [Create a branch named `<programming language>_To-Do app_<your name>`](https://github.com/firstcontributions/first-contributions#create-a-branch).
-4. On the local branch, create a directory named `<programming language>_To-Do app_<your name>`. 
+2. Clone your forked repository to your laptop:
+   1. From your GitHub account page, open the forked repository and click **Code**. Then click the copy-to-clipboard button.
+   2. Open a terminal and run the following command: `git clone <url-you-just-copied>`
+3. Create a branch named `<programming language>_ToDoApp_<your name>`:
+   1. On your laptop, navigate to the repository: `cd cockroachdb-todo-apps`
+   2. Create a branch: `git checkout -b <programming language>_ToDoApp_<your name>`
+4. Copy the `template_ToDoApp` directory and rename it to `<programming language>_ToDoApp_<your name>`. 
+   1. `cp template_ToDoApp <programming language>_ToDoApp_<your name>`
+   2. `cd <programming language>_ToDoApp_<your name>` 
 
 ### Step 2: Build your CockroachDB to-do app
 
@@ -31,6 +37,10 @@ Note for Hacktoberfest participants: The First Contributions repository is the o
 ### Step 3: Open a pull request
 
 1. [Add, commit, and push](https://docs.github.com/en/github/managing-files-in-a-repository/adding-a-file-to-a-repository-using-the-command-line) the folder to your branch.
+    1. `cd ..`
+    2. `git add <programming language>_ToDoApp_<your name>`
+    3. `git commit -m "Added To-Do app for <programming language>"`
+    4. `git push -u origin <programming language>_ToDoApp_<your name>`
 2. [Open a pull request](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request#creating-the-pull-request)!
 
 ## Note for newbies
