@@ -4,6 +4,8 @@ Code newbies and new open source contributors -- help us build our repository of
 
 Build a To-Do app using CockroachDB and a language/ORM of your choice!
 
+Note: Feel free to contribute your own app even if there's already one for the language of your choice. It's okay to have multiple apps using the same language as long as you don't plagiarize. 
+
 ## What is CockroachDB?
 CockroachDB is the distributed SQL database built to scale fast, survive anything, and thrive everywhere. Whether you are a single-person startup or a global enterprise, CockroachDB was designed to make managing data easy. To learn more about CockroachDB, see our [website](https://www.cockroachlabs.com/) and [docs](https://www.cockroachlabs.com/docs/stable/).
 
