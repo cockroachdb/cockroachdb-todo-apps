@@ -42,12 +42,12 @@ Change to the directory where you cloned the repo and run the code:
 
 python example.py
 
-Balances at Wed Jul 24 15:58:40 2019
-['1', '1000']
-['2', '250']
-Balances at Wed Jul 24 15:58:40 2019
-['1', '900']
-['2', '350']
+Initial Balances 
+['1', '500']
+['2', '200']
+After Balances 
+['1', '400']
+['2', '300']
 
 
 
