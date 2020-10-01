@@ -1,0 +1,126 @@
+{
+	"info": {
+		"_postman_id": "13ab5741-e007-4a48-a105-147919db8af7",
+		"name": "todo-cockroach-DB",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "addTodo",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"data\":\"Raise Cockroach DB PR\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/todo/create",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"todo",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getTodo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/todo/get/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"todo",
+						"get",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/todo/getAll",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"todo",
+						"getAll"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateTodo",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\n    \"data\": \"Raise cockroach DB PR today content\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/todo/update/0",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"todo",
+						"update",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteTodo",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/todo/delete/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"todo",
+						"delete",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
