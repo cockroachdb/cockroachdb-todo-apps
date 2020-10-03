@@ -26,7 +26,7 @@ public class TodoController {
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<String> updateTodoNote(@PathVariable("id") Long id, @RequestBody Todo todo) {
+    public ResponseEntity<String> updateTodoNote(@PathVariable("id") final Long id, @RequestBody final Todo todo) {
 
         todo.setId(id);
         if (todoService.updateTodoNote(todo))
@@ -51,8 +51,8 @@ public class TodoController {
     }
 
     @GetMapping("/get/{id}")
-    public ResponseEntity<Todo> addTodoNote(@PathVariable("id") Long id) {
-        Optional<Todo> todo = todoService.getTodoNote(id);
+    public ResponseEntity<Todo> addTodoNote(@PathVariable("id")final Long id) {
+        final Optional<Todo> todo = todoService.getTodoNote(id);
         if (todo.isPresent())
             return new ResponseEntity<>(todo.get(), HttpStatus.OK);
         else
