@@ -17,6 +17,7 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 public class Todo implements Serializable {
 
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -26,7 +27,7 @@ public class Todo implements Serializable {
     @Column(name = "created_on")
     private Timestamp createdOn;
 
-    public Todo(Long id) {
+    public Todo(final Long id) {
         this.id = id;
     }
 }
