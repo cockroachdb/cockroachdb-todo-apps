@@ -11,6 +11,8 @@ import org.springframework.boot.autoconfigure.liquibase.LiquibaseAutoConfigurati
 public class TodoappCockroachdbApplication {
 
     public static void main(String[] args) {
+        
+        
         SpringApplication.run(TodoappCockroachdbApplication.class, args);
     }
 
