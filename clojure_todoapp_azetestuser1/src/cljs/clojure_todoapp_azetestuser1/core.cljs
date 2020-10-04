@@ -64,7 +64,13 @@
   (.. e -target -value))
 
 (defn load-item []
-  [
+  [grid {:item true :xs 3}
+   [button {:color "primary" :variant "contained" :on-click #(println "Loading")}  "load item"]])
+
+
+(defn save-item []
+  [grid {:item true :xs 3}
+   [button {:color "primary" :variant "contained" :on-click #(println "Saving")}  "save item"]])
 
 (defn add-item []
   [grid {:item true :xs 3}
@@ -100,10 +106,9 @@
      [:div
       [grid {:container true :spacing 1}
        (add-item)
-       [grid {:item true :xs 3}
-        [button {:color "primary" :variant "contained"} "load list"]]
-       [grid {:item true :xs 6} ]
-           (todo-list @app-state)
+       (save-item)
+       (load-item)
+       (todo-list @app-state)
        ]]]))
 
 
