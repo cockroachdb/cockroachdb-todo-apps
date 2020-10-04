@@ -1,3 +1,4 @@
+# (C) 2020 Emmanuel Salcido
 from django.http import JsonResponse, HttpResponse
 from django.utils.decorators import method_decorator
 from django.views.generic import View

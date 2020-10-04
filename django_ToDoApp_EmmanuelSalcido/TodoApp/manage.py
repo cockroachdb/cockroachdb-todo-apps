@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# (C) 2020 Emmanuel Salcido
 """Django's command-line utility for administrative tasks."""
 import os
 import sys

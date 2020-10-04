@@ -1,3 +1,4 @@
+# (C) 2020 Emmanuel Salcido
 """
 Django settings for TodoApp project.
 

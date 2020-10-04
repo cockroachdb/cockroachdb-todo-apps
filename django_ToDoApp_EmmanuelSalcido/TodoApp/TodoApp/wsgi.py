@@ -1,3 +1,4 @@
+# (C) 2020 Emmanuel Salcido
 """
 WSGI config for TodoApp project.
 

@@ -1,3 +1,5 @@
+# (C) 2020 Emmanuel Salcido
+
 """
 ASGI config for TodoApp project.
 
