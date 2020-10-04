@@ -63,6 +63,9 @@
   [^js/Event e]
   (.. e -target -value))
 
+(defn load-item []
+  [
+
 (defn add-item []
   [grid {:item true :xs 3}
    [button {:color "primary" :variant "contained" :on-click #(swap! app-state assoc (+ 1 (apply max (keys @app-state))) {:is-done false :todo-text "add todo" :has-changed true })}  "add item"]]
@@ -98,7 +101,7 @@
       [grid {:container true :spacing 1}
        (add-item)
        [grid {:item true :xs 3}
-        [button {:color "primary" :variant "contained"} "save list"]]
+        [button {:color "primary" :variant "contained"} "load list"]]
        [grid {:item true :xs 6} ]
            (todo-list @app-state)
        ]]]))
