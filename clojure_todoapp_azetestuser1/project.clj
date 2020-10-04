@@ -13,6 +13,8 @@
                  [reagent-utils "0.3.3"]
                  [ring "1.8.1"]
                  [ring/ring-defaults "0.3.2"]
+                 [ring-cors "0.1.13"]
+                 [ring/ring-json "0.5.0"]
                  [hiccup "1.0.5"]
                  [yogthos/config "1.1.7"]
                  [org.clojure/clojurescript "1.10.773"

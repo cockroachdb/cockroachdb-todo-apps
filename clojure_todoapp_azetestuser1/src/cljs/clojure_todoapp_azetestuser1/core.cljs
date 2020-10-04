@@ -1,4 +1,5 @@
 (ns clojure-todoapp-azetestuser1.core
+  (:require-macros [cljs.core.async.macros :refer [go]])
   (:require
    [reagent.core :as reagent :refer [atom]]
    [reagent.dom :as rdom]
@@ -25,7 +26,10 @@
    [reagent-material-ui.icons.face :refer [face]]
    [reagent-material-ui.pickers.date-picker :refer [date-picker]]
    [reagent-material-ui.pickers.mui-pickers-utils-provider :refer [mui-pickers-utils-provider]]
-   [reagent-material-ui.styles :as styles]))
+   [reagent-material-ui.styles :as styles]
+   [cljs-http.client :as http]
+   [cljs.core.async :refer [<!]]
+  ))
 
 ;; -------------------------
 ;; Routes
@@ -63,14 +67,28 @@
   [^js/Event e]
   (.. e -target -value))
 
+(defn get-items-api []
+  (go (let [response (<! (http/get "/todo"
+                                 {:with-credentials? false}))]
+      (prn (:status response))
+      (prn (:body response)))))
+
+(defn save-items-api []
+  (go (let [response (<! (http/post "/todo"
+                                    {
+                                     :json-params  @app-state
+                                     }))]
+      (prn (:status response))
+      (prn (:body response)))))
+
 (defn load-item []
   [grid {:item true :xs 3}
-   [button {:color "primary" :variant "contained" :on-click #(println "Loading")}  "load item"]])
+   [button {:color "primary" :variant "contained" :on-click #(get-items-api)}  "load item"]])
 
 
 (defn save-item []
   [grid {:item true :xs 3}
-   [button {:color "primary" :variant "contained" :on-click #(println "Saving")}  "save item"]])
+   [button {:color "primary" :variant "contained" :on-click #(save-items-api)}  "save item"]])
 
 (defn add-item []
   [grid {:item true :xs 3}

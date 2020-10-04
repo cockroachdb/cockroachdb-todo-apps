@@ -2,6 +2,8 @@
   (:require
    [reitit.ring :as reitit-ring]
    [clojure-todoapp-azetestuser1.middleware :refer [middleware]]
+   [ring.middleware.cors :refer [wrap-cors]]
+   [ring.middleware.json :refer [wrap-json-body]]
    [hiccup.page :refer [include-js include-css html5]]
    [config.core :refer [env]]))
 
@@ -33,17 +35,25 @@
    :body (loading-page)})
 
 
-(defn todo-items
+(defn todo-items-get
   [_request]
   {:status 200
    :header {"Content-Type" "application/json"}
    :body {1 "aa"}})
 
+(defn todo-items-save
+  [_request]
+    {:status 200
+     :header {"Content-Type" "application/json"}
+     :body (:body _request) })
+
 (def app
   (reitit-ring/ring-handler
    (reitit-ring/router
     [["/" {:get {:handler index-handler}}]
-     ["/todo" {:get {:handler todo-items}}]
+     ["/todo" {:get {:handler todo-items-get}
+               :post {:handler todo-items-save}
+               }]
      ["/items"
       ["" {:get {:handler index-handler}}]
       ["/:item-id" {:get {:handler index-handler
@@ -52,4 +62,10 @@
    (reitit-ring/routes
     (reitit-ring/create-resource-handler {:path "/" :root "/public"})
     (reitit-ring/create-default-handler))
-   {:middleware middleware}))
+   {:data 
+    {:middleware (into [wrap-json-body]
+                       (into [ #(wrap-cors % 
+                                           :access-control-allow-origin [#".*"] 
+                                           :access-control-allow-methods [:get :post])]
+                             middleware))}})) 
+                        
