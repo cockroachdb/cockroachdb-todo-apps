@@ -7,16 +7,11 @@ DB only have one table with the items created by user
 
 ### Endpoints & examples
 | Routs | Request | Response | Method | Status |
-| item/ | - | [{ "id": "123456789", "description": "create todo app"}, { "id": "987654321", "description": "learn cockroachDB"}] | GET | 200 |
-| item/(id) | { "description": "learn Django" } | - | POST | 201 |
-| item/(id) | { "description": "learn Django" } | - | PUT | 200/400 |
-| item/(id) | - | - | DELETE | 200/404 |
-
-
-{
-    description
-}
-
+| --- | --- | --- | --- | --- |
+| item/ | . | [{ "id": "123456789", "description": "create todo app"}, { "id": "987654321", "description": "learn cockroachDB"}] | GET | 200 |
+| item/(id) | { "description": "learn Django" } | . | POST | 201 |
+| item/(id) | { "description": "learn Django" } | . | PUT | 200/400 |
+| item/(id) | . | . | DELETE | 200/404 |
 
 I want to learn more about cockroach and django so I want to continue contributing on this.
 
