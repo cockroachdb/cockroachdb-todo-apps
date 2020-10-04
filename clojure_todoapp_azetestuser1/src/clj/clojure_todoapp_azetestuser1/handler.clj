@@ -32,10 +32,18 @@
    :headers {"Content-Type" "text/html"}
    :body (loading-page)})
 
+
+(defn todo-items
+  [_request]
+  {:status 200
+   :header {"Content-Type" "application/json"}
+   :body {1 "aa"}})
+
 (def app
   (reitit-ring/ring-handler
    (reitit-ring/router
     [["/" {:get {:handler index-handler}}]
+     ["/todo" {:get {:handler todo-items}}]
      ["/items"
       ["" {:get {:handler index-handler}}]
       ["/:item-id" {:get {:handler index-handler
