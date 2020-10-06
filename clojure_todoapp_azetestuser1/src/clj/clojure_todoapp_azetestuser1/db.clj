@@ -11,16 +11,38 @@
               :user "root"
               })
 
-(defn test_connection_insert [db]
-  (j/with-db-connection [conn db]
-    (j/insert! conn :item  {:id (java.util.UUID/randomUUID)
-                            :description "todo hello world!!"
-                            :is_done false
-                            :update_dt (t/sql-timestamp)
-                            })))
+(defn connection-check-row [conn id]
+  (not (empty?  (j/query conn ["select * from todoapp.item where id = ?"  (.toString id)]))))
+
+(defn connection-insert [db items]
+  (map (fn [item]
+         (j/with-db-connection [conn db]
+           (let [ id (read-string  (first item))
+                 description ((last item) "todo-text")
+                 is_done ((last item) "is-done")
+                 exists_row? (connection-check-row conn id)
+                 ts (t/sql-timestamp)
+                 ]
+             (println item) 
+             (if exists_row?
+               (j/update! conn :item  {
+                                       :description description
+                                       :is_done is_done
+                                       :update_dt ts
+                                       } ["id = ? and ( description != ? or is_done != ? )" id description is_done])
+               (j/insert! conn :item  {:id id
+                                       :description description
+                                       :is_done is_done
+                                       :update_dt ts
+                                       }))
+             )))
+       items)) 
 
 
-(defn test_connection_query [db]
+
+(defn connection-query [db]
   (j/with-db-connection [conn db]
-     (j/query conn ["select id, last_value(description) over (partition by id order by update_dt) description,last_value(is_done) over (partition by id order by update_dt) is_done  from todoapp.item"])
-    ))
+    (let [r (vec (j/query conn ["select id,description,is_done from todoapp.item"]))]
+      (println r)
+      r
+    )))

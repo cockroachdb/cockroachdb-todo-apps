@@ -49,17 +49,18 @@
 
 ;;--------------------------
 ;; Data Atom
-(defonce app-state (atom { 
-                                 1 {:is-done true
-                                      :todo-text "something intertesting"
-                                      :has-changed false
-                                      }
+;; (defonce app-state (atom { 
+;;                                  1  {:is-done true
+;;                                       :todo-text "something intertesting"
+;;                                       :has-changed false
+;;                                       }
                              
-                                 2 {:is-done false
-                                      :todo-text "hello world!!"
-                                      :has-changed false
-                                      }
-                                 }))
+;;                                  2 {:is-done false
+;;                                       :todo-text "hello world!!"
+;;                                       :has-changed false
+;;                                       }
+;;                                  }))
+(defonce app-state (atom {}))
 
 ;;--------------------------
 ;; Helper Code
@@ -69,17 +70,29 @@
 
 (defn get-items-api []
   (go (let [response (<! (http/get "/todo"
-                                 {:with-credentials? false}))]
-      (prn (:status response))
-      (prn (:body response)))))
+                                   {:with-credentials? false
+                                    :response-format :json
+                                    :keywords? true
+                                    }))]
+        (prn (type (:body response)))
+        (prn response)
+        (reset! app-state (into {} (map (fn [x] [(:id x)
+                                                 (assoc 
+                                                  (clojure.set/rename-keys
+                                                   (dissoc x :id)
+                                                   {:description :todo-text
+                                                    :is_done :is-done})
+                                                  :has-changed false
+                                                  )]) (:body response))))
+        )))
 
 (defn save-items-api []
   (go (let [response (<! (http/post "/todo"
                                     {
                                      :json-params  @app-state
                                      }))]
-      (prn (:status response))
-      (prn (:body response)))))
+        (:body response)
+        )))
 
 (defn load-item []
   [grid {:item true :xs 3}
@@ -92,7 +105,7 @@
 
 (defn add-item []
   [grid {:item true :xs 3}
-   [button {:color "primary" :variant "contained" :on-click #(swap! app-state assoc (+ 1 (apply max (keys @app-state))) {:is-done false :todo-text "add todo" :has-changed true })}  "add item"]]
+   [button {:color "primary" :variant "contained" :on-click #(swap! app-state assoc (random-uuid) {:is-done false :todo-text "add todo" :has-changed true })}  "add item"]]
   )
 
 (defn todo-item [id todo-detail]
@@ -107,13 +120,11 @@
      ]))
 
 (defn todo-list [todos]
-  (do
-    (println todos)
   [list
   (map
    (fn [id] (todo-item id (todos id)))
    (keys todos))]
-  ))
+  )
 ;; -------------------------
 ;; Page components
 
