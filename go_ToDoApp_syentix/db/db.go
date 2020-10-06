@@ -7,12 +7,13 @@ import (
 	"gorm.io/gorm"
 )
 
-// ConnectDB is used to connect to the CockroachDB
-func ConnectDB() *gorm.DB {
-	dsn := "dbname=hacktoberfest port=26257 sslmode=disable"
+// CreateConnection creates a DB connection
+func CreateConnection() *gorm.DB {
+	dsn := "dbname=hacktoberfest host=localhost user=todouser port=26257 sslmode=disable"
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {
 		panic(err)
 	}
+
 	return db
 }
