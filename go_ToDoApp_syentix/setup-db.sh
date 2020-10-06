@@ -1,12 +1,7 @@
 #!/bin/sh
 set -ex
 
-if [ -z $1 ]
-then
 USERNAME="todouser"
-else 
-USERNAME=$1
-fi
 
 cockroach sql -e "DROP TABLE IF EXISTS todos;" --insecure
 cockroach sql -e "DROP DATABASE IF EXISTS hacktoberfest;" --insecure
