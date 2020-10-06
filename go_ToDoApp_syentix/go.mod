@@ -1,3 +1,4 @@
+// Ole S. (C) 2020
 module go-todo-app
 
 go 1.15
