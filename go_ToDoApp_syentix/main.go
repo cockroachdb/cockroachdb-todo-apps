@@ -28,33 +28,57 @@ func main() {
 
 		switch args[0] {
 		case "add":
-			fmt.Println("Add")
-			break
+			if argsValid(args, false) {
+				handlers.AddTodo(args[1])
+			} else {
+				fmt.Println("\tYou need to add text to your todo :)")
+			}
+
 		case "rm":
-			fmt.Println("Remove")
+			if argsValid(args, true) {
+				index, _ := strconv.Atoi(args[1])
+				handlers.RemoveTodo(index)
+			} else {
+				fmt.Println("\tNot a valid id.")
+			}
 		case "remove":
-			fmt.Println("Remove")
+			if argsValid(args, true) {
+				index, _ := strconv.Atoi(args[1])
+				handlers.RemoveTodo(index)
+			} else {
+				fmt.Println("Not a valid id.")
+			}
+
 		case "complete":
-			fmt.Println("Check")
+			if argsValid(args, true) {
+				index, _ := strconv.Atoi(args[1])
+				handlers.CheckTodo(index)
+			} else {
+				fmt.Println("Not a valid id.")
+			}
 		case "check":
-			fmt.Println("Check")
+			if argsValid(args, true) {
+				index, _ := strconv.Atoi(args[1])
+				handlers.CheckTodo(index)
+			} else {
+				fmt.Println("Not a valid id.")
+			}
+
 		case "list":
-			fmt.Println("List")
-		case "info":
-			fmt.Println("Info")
+			handlers.GetAllTodos()
+
 		case "q":
 			quit()
 		case "exit":
 			quit()
 		case "quit":
 			quit()
+
 		case "help":
 			handlers.Help()
 		default:
-			fmt.Println("That's not a command. Try 'help' to check out the valid commands.")
+			fmt.Println("\tThat's not a command. Try 'help' to check out the valid commands.")
 		}
-
-		fmt.Println()
 	}
 
 }
@@ -67,7 +91,6 @@ func argsValid(args []string, checkIfID bool) bool {
 		return false
 	}
 	return true
-
 }
 
 func quit() {
