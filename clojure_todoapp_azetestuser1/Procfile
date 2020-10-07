@@ -1,0 +1,1 @@
+web: java $JVM_OPTS -cp target/clojure_todoapp_azetestuser1.jar clojure.main -m clojure-todoapp-azetestuser1.server
