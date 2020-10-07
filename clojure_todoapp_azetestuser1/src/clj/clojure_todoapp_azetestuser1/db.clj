@@ -17,13 +17,13 @@
 (defn connection-insert [db items]
   (map (fn [item]
          (j/with-db-connection [conn db]
-           (let [ id (read-string  (first item))
+           (let [ id (first item)
                  description ((last item) "todo-text")
                  is_done ((last item) "is-done")
                  exists_row? (connection-check-row conn id)
                  ts (t/sql-timestamp)
                  ]
-             (println item) 
+             (println (type id)) 
              (if exists_row?
                (j/update! conn :item  {
                                        :description description
