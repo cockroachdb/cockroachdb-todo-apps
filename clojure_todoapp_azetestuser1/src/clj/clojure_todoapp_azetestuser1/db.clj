@@ -12,7 +12,7 @@
               })
 
 (defn connection-check-row [conn id]
-  (not (empty?  (j/query conn ["select * from todoapp.item where id = ?"  (.toString id)]))))
+  (not (empty?  (j/query conn ["select * from todoapp.item where id = ?" id]))))
 
 (defn connection-insert [db items]
   (map (fn [item]

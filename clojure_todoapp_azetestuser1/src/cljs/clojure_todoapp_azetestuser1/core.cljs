@@ -110,7 +110,7 @@
 
 (defn add-item []
   [grid {:item true :xs 3}
-   [button {:color "primary" :variant "contained" :on-click #(swap! app-state assoc (random-uuid) {:is-done false :todo-text "add todo" :has-changed true })}  "add item"]]
+   [button {:color "primary" :variant "contained" :on-click #(swap! app-state assoc (.toString (random-uuid)) {:is-done false :todo-text "add todo" :has-changed true })}  "add item"]]
   )
 
 (defn todo-item [id todo-detail]
