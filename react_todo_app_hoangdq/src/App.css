@@ -1,0 +1,67 @@
+.App {
+  width: 800px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.App-form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: 8px 4px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #aaa;
+}
+
+.App-form > :nth-child(1) {
+  display: flex;
+  flex-direction: column;
+}
+
+.App-form > :nth-child(1) > * {
+  outline: none;
+  border: 1px solid #aaa;
+  transition: all .3s;
+  border-radius: 2px;
+}
+
+.App-form > :nth-child(1) > *:focus {
+  box-shadow: 0 0 7px #1abc9c;
+  border: 1px solid #1abc9c;
+}
+
+.App-form > :nth-child(1) > :first-child {
+  font-size: 18px;
+  height: 24px;
+  padding: 2px 8px;
+}
+
+.App-form > :nth-child(1) > :last-child {
+  margin-top: 4px;
+  font-size: 16px;
+  height: 40px;
+  padding: 2px 8px;
+}
+
+.App-form > :nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.App-form button {
+  border: 1px solid #ccc;
+  background: #0066FF;
+  padding: 4px 8px;
+  border-radius: 2px;
+  margin-top: 8px;
+  cursor: pointer;
+  box-shadow: 0px 2px 2px 0px rgba(0,0,0,.1);
+}
+
+.App-form button:hover {
+  background: #003399;
+}
