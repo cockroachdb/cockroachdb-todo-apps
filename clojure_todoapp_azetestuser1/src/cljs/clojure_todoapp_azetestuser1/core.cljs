@@ -141,8 +141,8 @@
 (defn home-page []
   (fn []
     [:span.main
-     [:h1 "Todo List "]
-     (show-server)
+     [:h1 "Todo List"  (show-server)]
+    
      [:div
       [grid {:container true :spacing 1}
        (add-item)
