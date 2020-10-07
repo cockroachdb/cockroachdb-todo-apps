@@ -15,6 +15,7 @@
    [reagent-material-ui.core.grid :refer [grid]]
    [reagent-material-ui.core.menu-item :refer [menu-item]]
    [reagent-material-ui.core.text-field :refer [text-field]]
+   [reagent-material-ui.core.chip :refer [chip]]
    [reagent-material-ui.core.list :refer [list]]
    [reagent-material-ui.core.list-item :refer [list-item]]
    [reagent-material-ui.core.list-item-text :refer [list-item-text]]
@@ -24,9 +25,14 @@
    [reagent-material-ui.icons.add-box :refer [add-box]]
    [reagent-material-ui.icons.clear :refer [clear]]
    [reagent-material-ui.icons.face :refer [face]]
+   [reagent-material-ui.core.avatar :refer [avatar]]
+   [reagent-material-ui.icons.check :refer [check]]
+   [reagent-material-ui.icons.clear :refer [clear]]
    [reagent-material-ui.pickers.date-picker :refer [date-picker]]
    [reagent-material-ui.pickers.mui-pickers-utils-provider :refer [mui-pickers-utils-provider]]
    [reagent-material-ui.styles :as styles]
+   [cljs-time.core :as cjt]
+   [cljs-time.format :as cft]
    [cljs-http.client :as http]
    [cljs.core.async :refer [<!]]
   ))
@@ -61,7 +67,7 @@
 ;;                                       }
 ;;                                  }))
 (defonce app-state (atom {}))
-
+(defonce api-response (atom [true (cjt/time-now)]))
 ;;--------------------------
 ;; Helper Code
 (defn event-value
@@ -74,24 +80,23 @@
                                     :response-format :json
                                     :keywords? true
                                     }))]
-        (prn (type (:body response)))
-        (prn response)
-        (reset! app-state (into {} (map (fn [x] [(:id x)
-                                                 (assoc 
-                                                  (clojure.set/rename-keys
-                                                   (dissoc x :id)
-                                                   {:description :todo-text
-                                                    :is_done :is-done})
-                                                  :has-changed false
-                                                  )]) (:body response))))
-        )))
+        (if (:success response)
+          (reset! app-state (into {} (map (fn [x] [(:id x)
+                                                     (assoc 
+                                                      (clojure.set/rename-keys
+                                                       (dissoc x :id)
+                                                       {:description :todo-text
+                                                        :is_done :is-done})
+                                                      :has-changed false
+                                                      )]) (:body response)))))
+        (reset! api-response [(:success response) (cjt/time-now)]))))
 
 (defn save-items-api []
   (go (let [response (<! (http/post "/todo"
                                     {
                                      :json-params  @app-state
                                      }))]
-        (:body response)
+        (reset! api-response [(:success response) (cjt/time-now)])
         )))
 
 (defn load-item []
@@ -125,6 +130,11 @@
    (fn [id] (todo-item id (todos id)))
    (keys todos))]
   )
+(def built-in-formatter (cft/formatter "H:m:s"))
+(defn show-server []
+  [chip {:icon (if (first @api-response) (reagent/as-element [check]) (reagent/as-element [clear]))
+         :label (cft/unparse built-in-formatter (second @api-response))
+         }])
 ;; -------------------------
 ;; Page components
 
@@ -132,6 +142,7 @@
   (fn []
     [:span.main
      [:h1 "Todo List "]
+     (show-server)
      [:div
       [grid {:container true :spacing 1}
        (add-item)
