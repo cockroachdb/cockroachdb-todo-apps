@@ -1,6 +1,7 @@
 package com.cockroachdb.hacktoberfest.controllers;
 
 import com.cockroachdb.hacktoberfest.model.Task;
+import com.cockroachdb.hacktoberfest.model.dtos.AddCommentTaskDTO;
 import com.cockroachdb.hacktoberfest.model.dtos.CreateTaskDTO;
 import com.cockroachdb.hacktoberfest.model.dtos.UpdateTaskDTO;
 import com.cockroachdb.hacktoberfest.services.TaskService;
@@ -51,8 +52,8 @@ public class TaskController {
 	}
 
 	@PutMapping(path = "/{taskId}/comments", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public Task addComment(@PathVariable("taskId") @NonNull final Long taskId) {
+	public Task addComment(@PathVariable("taskId") @NonNull final Long taskId, @RequestBody @Validated @NonNull final AddCommentTaskDTO body) {
 		final Task task = taskService.getByIdOrThrow(taskId);
-		return taskService.addComment(task);
+		return taskService.addComment(task, body);
 	}
 }
