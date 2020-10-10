@@ -5,6 +5,7 @@ DROP TABLE IF EXISTS task CASCADE;
 -- CREATE TABLES
 CREATE TABLE task (
 	id SERIAL NOT NULL,
+	title text NOT NULL,
 	description text,
 	status text DEFAULT 'PENDING' NOT NULL,
 	archived boolean DEFAULT false NOT NULL,
