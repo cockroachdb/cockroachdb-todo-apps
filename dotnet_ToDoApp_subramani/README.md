@@ -15,10 +15,10 @@ A simple dotnet todoapp
 + Run the application
 
 # Create user, database and grant permissions
-CREATE USER IF NOT EXISTS subramani;
-CREATE DATABASE tododb;
-GRANT ALL ON DATABASE tododb TO subramani;
+CREATE USER IF NOT EXISTS subramani; <br />
+CREATE DATABASE tododb; <br />
+GRANT ALL ON DATABASE tododb TO subramani; <br />
 
 # Run the application
-dotnet restore
-dotnet run
+dotnet restore <br />
+dotnet run <br />
