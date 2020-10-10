@@ -24,7 +24,6 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-jooq'
     implementation 'org.springframework.boot:spring-boot-starter-jdbc'
@@ -50,6 +49,7 @@ jooq {
     version = dependencyManagement.importedProperties['jooq.version']
     configurations {
         main {
+            generateSchemaSourceOnCompilation = false
             generationTool {
                 logging = org.jooq.meta.jaxb.Logging.WARN
                 jdbc {
@@ -69,5 +69,30 @@ jooq {
                 }
             }
         }
+    }
+}
+
+import groovy.sql.Sql
+
+def sqlDir = file 'src/main/resources/'
+task sql {
+    configurations {
+        jdbc
+    }
+    dependencies {
+        jdbc 'org.postgresql:postgresql:42.2.1'
+    }
+
+    doLast {
+        def sqlClassLoader = Sql.classLoader
+        configurations.jdbc.each { sqlClassLoader.addURL it.toURI().toURL() }
+        def props = [user: (String) project.property("username"), password: (String) project.property("password"), allowMultiQueries: 'true'] as Properties
+        def url = (String) project.property("url")
+        def driver = 'org.postgresql.Driver'
+        def sql = Sql.newInstance(url, props, driver)
+        fileTree(dir: sqlDir, include: "**.sql").each {
+            sql.execute(it.text)
+        }
+        sql.close()
     }
 }
