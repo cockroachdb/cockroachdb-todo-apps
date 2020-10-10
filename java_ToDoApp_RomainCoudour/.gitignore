@@ -32,3 +32,4 @@ out/
 ### VS Code ###
 .vscode/
 /src/main/resources/application.properties
+/src/main/java/com/cockroachdb/hacktoberfest/model/jooq/
