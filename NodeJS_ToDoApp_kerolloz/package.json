@@ -1,0 +1,17 @@
+{
+  "name": "cockroach",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "fastify": "^3.5.1",
+    "sequelize": "^6.3.5",
+    "sequelize-cockroachdb": "^1.1.0"
+  },
+  "scripts": {
+    "start": "node ."
+  },
+  "keywords": [],
+  "author": "Kerollos Magdy",
+  "license": "ISC"
+}
