@@ -20,4 +20,5 @@ CREATE DATABASE tododb;
 GRANT ALL ON DATABASE tododb TO subramani;
 
 # Run the application
+dotnet restore
 dotnet run
