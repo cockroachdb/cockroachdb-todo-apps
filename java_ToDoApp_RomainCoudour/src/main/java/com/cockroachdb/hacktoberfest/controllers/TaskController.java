@@ -24,7 +24,8 @@ public class TaskController {
 
 	@GetMapping(path = "/{taskId}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public Task getTask(@PathVariable("taskId") @NonNull final Long taskId) {
-		return null;
+		return taskService.getById(taskId)
+				.orElseThrow(() -> new RuntimeException("Resource 'TASK' not found with identifier (" + taskId + ")"));
 	}
 
 	@PostMapping(path = "", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
