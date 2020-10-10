@@ -11,7 +11,7 @@ A simple dotnet todoapp
 + [Install CockroachDB](https://www.cockroachlabs.com/docs/v20.1/install-cockroachdb-mac.html)
 + [Start a local cluster](https://www.cockroachlabs.com/docs/v20.1/start-a-local-cluster)
 + Create user, database and grant permissions
-+ [Install dotnet] (https://dotnet.microsoft.com/download)
++ [Install dotnet](https://dotnet.microsoft.com/download)
 + Run the application
 
 # Create user, database and grant permissions
