@@ -1,12 +1,12 @@
 package com.cockroachdb.hacktoberfest.controllers;
 
+import com.cockroachdb.hacktoberfest.model.PageRequest;
 import com.cockroachdb.hacktoberfest.model.Task;
-import com.cockroachdb.hacktoberfest.model.dtos.AddCommentTaskDTO;
+import com.cockroachdb.hacktoberfest.model.dtos.CreateCommentDTO;
 import com.cockroachdb.hacktoberfest.model.dtos.CreateTaskDTO;
 import com.cockroachdb.hacktoberfest.model.dtos.UpdateTaskDTO;
 import com.cockroachdb.hacktoberfest.services.TaskService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.http.MediaType;
 import org.springframework.lang.NonNull;
 import org.springframework.validation.annotation.Validated;
@@ -52,7 +52,7 @@ public class TaskController {
 	}
 
 	@PutMapping(path = "/{taskId}/comments", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public Task addComment(@PathVariable("taskId") @NonNull final Long taskId, @RequestBody @Validated @NonNull final AddCommentTaskDTO body) {
+	public Task addComment(@PathVariable("taskId") @NonNull final Long taskId, @RequestBody @Validated @NonNull final CreateCommentDTO body) {
 		final Task task = taskService.getByIdOrThrow(taskId);
 		return taskService.addComment(task, body);
 	}

@@ -17,27 +17,19 @@
 
 package com.cockroachdb.hacktoberfest.repositories.mappers;
 
-import com.cockroachdb.hacktoberfest.model.Task;
-import com.cockroachdb.hacktoberfest.model.enums.TaskStatus;
-import db.public_.tables.records.TaskRecord;
+import com.cockroachdb.hacktoberfest.model.Comment;
+import db.public_.tables.records.CommentRecord;
 import org.jooq.RecordMapper;
 import org.springframework.stereotype.Component;
 
-import java.util.Collections;
-
 @Component
-public class TaskMapper implements RecordMapper<TaskRecord, Task> {
+public class CommentMapper implements RecordMapper<CommentRecord, Comment> {
 	@Override
-	public Task map(final TaskRecord record) {
-		return Task.builder()
+	public Comment map(final CommentRecord record) {
+		return Comment.builder()
 				.id(record.getId())
-				.title(record.getTitle())
-				.description(record.getDescription())
-				.status(TaskStatus.valueOf(record.getStatus()))
-				.deadline(record.getDeadline())
-				.archived(record.getArchived())
-				.rowId(record.getRowid())
-				.comments(Collections.emptyList())
+				.content(record.getContent())
+				.username(record.getUsername())
 				.build();
 	}
 }

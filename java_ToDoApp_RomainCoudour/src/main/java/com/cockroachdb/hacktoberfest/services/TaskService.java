@@ -1,29 +1,36 @@
 package com.cockroachdb.hacktoberfest.services;
 
+import com.cockroachdb.hacktoberfest.model.Comment;
+import com.cockroachdb.hacktoberfest.model.PageRequest;
 import com.cockroachdb.hacktoberfest.model.Task;
+import com.cockroachdb.hacktoberfest.model.dtos.CreateCommentDTO;
 import com.cockroachdb.hacktoberfest.model.dtos.CreateTaskDTO;
 import com.cockroachdb.hacktoberfest.model.dtos.UpdateTaskDTO;
 import com.cockroachdb.hacktoberfest.repositories.TaskRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class TaskService {
 
 	private final TaskRepository taskRepository;
+	private final CommentService commentService;
 
 	public Task getByIdOrThrow(final long id) {
-		return taskRepository.findById(id)
-				.orElseThrow(() -> new RuntimeException("Resource 'TASK' not found with identifier (" + id + ")"));
+		return computeWithComment(taskRepository.findById(id)
+				.orElseThrow(() -> new RuntimeException("Resource 'TASK' not found with identifier (" + id + ")")));
 	}
 
-	public List<Task> getTasks(final Pageable pageable) {
-		return taskRepository.getAllPaginated(pageable.getOffset(), pageable.getPageSize());
+	public List<Task> getTasks(final PageRequest pageRequest) {
+		return taskRepository.getAllPaginated(pageRequest)
+				.stream()
+				.map(this::computeWithComment)
+				.collect(Collectors.toList());
 	}
 
 	public Task create(final CreateTaskDTO body) {
@@ -31,7 +38,8 @@ public class TaskService {
 	}
 
 	public Task update(final Task task, final UpdateTaskDTO body) {
-		return taskRepository.update(task, body);
+		final Task updatedTask = taskRepository.update(task, body);
+		return computeWithComment(updatedTask);
 	}
 
 	public void delete(final Task task) {
@@ -39,8 +47,15 @@ public class TaskService {
 	}
 
 	@Transactional
-	public Task addComment(final Task task) {
-		return null;
+	public Task addComment(final Task task, final CreateCommentDTO body) {
+		commentService.create(task, body);
+		return computeWithComment(task);
+	}
+
+	private Task computeWithComment(final Task task) {
+		final List<Comment> comments = commentService.getAllByTask(task);
+		task.setComments(comments);
+		return task;
 	}
 
 }

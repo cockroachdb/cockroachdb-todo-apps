@@ -1,6 +1,7 @@
 package com.cockroachdb.hacktoberfest.model;
 
 import com.cockroachdb.hacktoberfest.model.enums.TaskStatus;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Builder;
 import lombok.Data;
 
@@ -19,4 +20,7 @@ public class Task {
 	boolean archived = false;
 	OffsetDateTime deadline;
 	List<Comment> comments;
+	
+	@JsonIgnore
+	long rowId;
 }

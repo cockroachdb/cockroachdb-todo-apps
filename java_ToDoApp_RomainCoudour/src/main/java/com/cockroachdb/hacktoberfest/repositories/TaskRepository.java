@@ -1,5 +1,6 @@
 package com.cockroachdb.hacktoberfest.repositories;
 
+import com.cockroachdb.hacktoberfest.model.PageRequest;
 import com.cockroachdb.hacktoberfest.model.Task;
 import com.cockroachdb.hacktoberfest.model.dtos.CreateTaskDTO;
 import com.cockroachdb.hacktoberfest.model.dtos.UpdateTaskDTO;
@@ -20,13 +21,22 @@ public class TaskRepository {
 	private final DSLContext context;
 	private final TaskMapper taskMapper;
 	db.public_.tables.Task TASK_TABLE = db.public_.tables.Task.TASK;
+	db.public_.tables.Comment COMMENT_TABLE = db.public_.tables.Comment.COMMENT;
 
 	public Optional<Task> findById(final long id) {
 		return context.selectFrom(TASK_TABLE).where(TASK_TABLE.ID.eq(id)).fetchOptional(taskMapper);
 	}
 
-	public List<Task> getAllPaginated(final long offset, final int limit) {
-		return context.selectFrom(TASK_TABLE).offset(offset).limit(limit).fetch(taskMapper);
+	public Task getById(final Task task) {
+		return taskMapper.map(context.selectFrom(TASK_TABLE).where(TASK_TABLE.ID.eq(task.getId())).fetchOne());
+	}
+
+	public List<Task> getAllPaginated(final PageRequest pageRequest) {
+		return context.selectFrom(TASK_TABLE)
+				.offset(pageRequest.getOffset())
+				.limit(pageRequest.getLimit())
+				.fetch(taskMapper);
+
 	}
 
 	public Task insert(final CreateTaskDTO body) {
@@ -64,5 +74,4 @@ public class TaskRepository {
 	public void delete(final Task task) {
 		context.delete(TASK_TABLE).where(TASK_TABLE.ID.eq(task.getId())).execute();
 	}
-
 }
