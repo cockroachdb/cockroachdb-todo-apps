@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container p-2">
+        <a class="navbar-brand" href="/">CockRoach TODO</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                {{#if user}}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Todos
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/todos/create">Create TODO</a>
+                        <a class="dropdown-item" href="/todos">All TODOS</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/users/logout">
+                        <i class="material-icons" style="vertical-align: top;">
+                            exit_to_app
+                        </i>
+                        Logout
+                    </a>
+                </li>
+                {{else}}
+                <li class="nav-item">
+                    <a class="nav-link" href="/users/signup">
+                        SignUp
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/users/signin">
+                        SignIn
+                    </a>
+                </li>
+                {{/if}}
+            </ul>
+        </div>
+    </div>
+</nav>

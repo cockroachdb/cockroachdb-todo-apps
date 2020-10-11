@@ -1,0 +1,12 @@
+{
+  "name": "default",
+  "type": "cockroachdb",
+  "host": "localhost",
+  "port": 26257,
+  "username": "root",
+  "password": "",
+  "database": "defaultdb",
+  "logging": false,
+  "entities": ["dist/**/*.entity{.ts,.js}"],
+  "synchronize": true
+}
