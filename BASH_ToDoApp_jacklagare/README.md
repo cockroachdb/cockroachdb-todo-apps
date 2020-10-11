@@ -28,6 +28,14 @@ Initialize the cluster:
 `
 docker exec -it roach1 ./cockroach init --insecure`
 
+## Creating the database
+Create database
+
+`docker exec -it roach1 ./cockroach sql --insecure --execute="CREATE DATABASE todo;"`
+
+Create table
+
+`docker exec -it roach1 ./cockroach sql --insecure --execute="CREATE TABLE todo.tasks (id SERIAL PRIMARY KEY, description TEXT, status TEXT DEFAULT 'TO DO');"`
 
 ## Running the Application
 
