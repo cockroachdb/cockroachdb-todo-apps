@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+"use strict";
 var Sequelize = require("sequelize-cockroachdb");
 module.exports = (sequelize) => {
 	return sequelize.define("tasks", {

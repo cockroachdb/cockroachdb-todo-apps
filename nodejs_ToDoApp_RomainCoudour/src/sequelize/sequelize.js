@@ -12,7 +12,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+"use strict";
 var Sequelize = require("sequelize-cockroachdb");
+if (!Sequelize.supportsCockroachDB) {
+	throw new Error("CockroachDB dialect for Sequelize not installed");
+}
 var fs = require("fs");
 const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASSWORD, {
 	dialect: "postgres",

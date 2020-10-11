@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+"use strict";
 const env = require("dotenv").config();
 if (env.error) {
 	console.error("ERROR: Unable to parse .env file");
