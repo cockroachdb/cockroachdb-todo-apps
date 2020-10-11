@@ -34,15 +34,54 @@ view(){
     echo ''
 }
 
-while [ "$choice" != '5' ]
+update(){
+    echo '== Update a task =='
+    read -p 'Task ID: ' taskId
+    read -p 'Field to Update (Description or Status): ' field
+    read -p 'Value: ' value
+
+    if [ "$field" = "Status" ]
+    then
+        if [ "$value" != "TO DO" ] && [ "$value" != "IN PROGRESS" ] && [ "$value" != "DONE" ]
+        then
+            echo "Please provide any of the valid values: TO DO | IN PROGRESS | DONE"
+            return
+        fi
+
+        sqlStatement="UPDATE todo.tasks SET status = '$value' WHERE id = $taskId;"
+        docker exec -it roach1 ./cockroach sql --insecure --execute="$sqlStatement"
+        return
+    
+    fi
+
+    if [ "$field" = "Description" ]
+    then
+        sqlStatement="UPDATE todo.tasks SET description = '$value' WHERE id = $taskId;"
+        docker exec -it roach1 ./cockroach sql --insecure --execute="$sqlStatement"
+        return
+    fi
+    
+    echo ''
+    echo ''
+        
+}
+
+showAll(){
+    echo '== All Tasks =='
+    sqlStatement="SELECT * FROM todo.tasks;"
+    docker exec -it roach1 ./cockroach sql --insecure --execute="$sqlStatement"
+}
+
+while [ "$choice" != '6' ]
 do
     echo 'Hello! This is a Todo App using Bash and CockroachDb!'
     echo 'To begin, please choose an action: '
     echo '[1] Create a new task'
     echo '[2] View task'
-    echo '[3] Delete task'
-    echo '[4] Show all tasks'
-    echo '[5] Exit'
+    echo '[3] Update task'
+    echo '[4] Delete task'
+    echo '[5] Show all tasks'
+    echo '[6] Exit'
     echo
     echo 'Enter number of your choice:'
     read -p '> ' choice
@@ -55,10 +94,10 @@ do
             view
             ;;
         "3")
-            echo '3'
+            update
             ;;
-        "4")
-            echo '4'
+        "5")
+            showAll
             ;;
     esac
 done
