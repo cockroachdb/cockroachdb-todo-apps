@@ -17,7 +17,6 @@ const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, proces
 sequelize.authenticate();
 console.info("INFO: Connection to the database has been established successfully.");
 const taskModel = require("./models/task-model")(sequelize);
-const commentModel = require("./models/comment-model")(sequelize, taskModel);
 if (process.env.DB_INIT === "CREATE-DROP") {
 	try {
 		console.warn("WARN: Database init process is set to CREATE-DROP. Syncing models...");
@@ -27,4 +26,4 @@ if (process.env.DB_INIT === "CREATE-DROP") {
 		console.error("ERROR:", err);
 	}
 }
-module.exports = { sequelize, models: { taskModel, commentModel } };
+module.exports = { sequelize, models: { taskModel } };
