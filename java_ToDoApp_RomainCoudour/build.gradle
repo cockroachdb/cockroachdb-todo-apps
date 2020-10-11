@@ -1,0 +1,105 @@
+//
+// Copyright 2020 - Romain Coudour
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+plugins {
+    id 'org.springframework.boot' version '2.3.4.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+    id 'java'
+    id 'nu.studer.jooq' version '5.1.1'
+    id 'org.flywaydb.flyway' version '7.0.2'
+}
+
+group = 'com.cockroachdb'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+processResources {
+    expand(project.properties)
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-jooq'
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    implementation 'org.postgresql:postgresql'
+
+    implementation 'org.jooq:jooq'
+    implementation 'org.jooq:jooq-codegen'
+    jooqGenerator 'org.postgresql:postgresql'
+
+    compileOnly 'org.projectlombok:lombok'
+
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+}
+
+jooq {
+    version = dependencyManagement.importedProperties['jooq.version']
+    configurations {
+        main {
+            generateSchemaSourceOnCompilation = false
+            generationTool {
+                logging = org.jooq.meta.jaxb.Logging.WARN
+                jdbc {
+                    driver = 'org.postgresql.Driver'
+                    url = (String) project.property("url")
+                    user = (String) project.property("username")
+                    password = (String) project.property("password")
+                }
+                generator {
+                    name = 'org.jooq.codegen.DefaultGenerator'
+                    strategy.name = "org.jooq.codegen.DefaultGeneratorStrategy"
+                    generate {
+                        relations = true
+                        deprecated = false
+                        records = true
+                        immutablePojos = false
+                        fluentSetters = true
+                    }
+                    target {
+                        packageName = 'db'
+                        directory = 'src/main/java/com/cockroachdb/hacktoberfest/model/jooq'
+                    }
+                }
+            }
+        }
+    }
+}
+
+flyway {
+    url = (String) project.property("url")
+    user = (String) project.property("username")
+    password = (String) project.property("password")
+    locations = ["filesystem:$project.projectDir/src/main/resources/db"]
+    table = 'flyway_schema_history'
+}
+generateJooq.dependsOn flywayClean
+generateJooq.dependsOn flywayMigrate
