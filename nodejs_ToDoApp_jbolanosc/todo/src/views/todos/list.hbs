@@ -1,0 +1,29 @@
+<h1>{{user.username}}'s TODOS</h1>
+
+<div class="row">
+    {{#each todos}}
+    <div class="col-md-4 my-2">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h3>{{this.title}}</h3>
+                    <div>
+                        <a href="/todos/edit/{{this.id}}">
+                            <i class="material-icons">
+                                create
+                            </i>
+                        </a>
+                        <a href="/todos/delete/{{this.id}}" class="text-danger">
+                            <i class="material-icons">
+                                clear
+                            </i>
+                        </a>
+                    </div>
+                </div>
+                <p>{{this.body}}</p>
+                <p>{{formatDate this.created_at}}</p>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+</div>
