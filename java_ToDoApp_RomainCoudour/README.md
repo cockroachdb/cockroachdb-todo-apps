@@ -2,11 +2,11 @@
 ### Tech
 
 - Java 11
-- Spring boot
-- Gradle
-- CockroachDB (PostgresSQL)
-- Flyway
-- JOOQ
+- Spring boot 2.3.4
+- Gradle 6+
+- CockroachDB (PostgresSQL) (developed w/ Cockroach Cloud)
+- Flyway 7+
+- JOOQ 5+
 
 ### How to start
 > Note: If you are using Cockroach Cloud, you will receive this kind of address 'username@host:port'. Keep the 'host:port' part only.
