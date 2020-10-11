@@ -66,6 +66,13 @@ update(){
         
 }
 
+delete(){
+    echo '== Delete a task =='
+    read -p 'Task ID: ' taskId
+    sqlStatement="DELETE FROM todo.tasks WHERE id = $taskId;"
+    docker exec -it roach1 ./cockroach sql --insecure --execute="$sqlStatement"
+}
+
 showAll(){
     echo '== All Tasks =='
     sqlStatement="SELECT * FROM todo.tasks;"
@@ -95,6 +102,9 @@ do
             ;;
         "3")
             update
+            ;;
+        "4")
+            delete
             ;;
         "5")
             showAll
