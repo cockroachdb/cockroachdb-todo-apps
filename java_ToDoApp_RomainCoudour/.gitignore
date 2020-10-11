@@ -31,5 +31,6 @@ out/
 
 ### VS Code ###
 .vscode/
-/src/main/resources/application.properties
+
+### Generated classes from JOOQ ###
 /src/main/java/com/cockroachdb/hacktoberfest/model/jooq/
