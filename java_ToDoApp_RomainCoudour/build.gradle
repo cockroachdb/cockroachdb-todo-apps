@@ -3,6 +3,7 @@ plugins {
     id 'io.spring.dependency-management' version '1.0.10.RELEASE'
     id 'java'
     id 'nu.studer.jooq' version '5.1.1'
+    id 'org.flywaydb.flyway' version '7.0.2'
 }
 
 group = 'com.cockroachdb'
@@ -60,39 +61,30 @@ jooq {
                 }
                 generator {
                     name = 'org.jooq.codegen.DefaultGenerator'
-
+                    strategy.name = "org.jooq.codegen.DefaultGeneratorStrategy"
+                    generate {
+                        relations = true
+                        deprecated = false
+                        records = true
+                        immutablePojos = false
+                        fluentSetters = true
+                    }
                     target {
                         packageName = 'db'
                         directory = 'src/main/java/com/cockroachdb/hacktoberfest/model/jooq'
                     }
-                    strategy.name = "org.jooq.codegen.DefaultGeneratorStrategy"
                 }
             }
         }
     }
 }
 
-import groovy.sql.Sql
-
-def sqlDir = file 'src/main/resources/'
-task sql {
-    configurations {
-        jdbc
-    }
-    dependencies {
-        jdbc 'org.postgresql:postgresql:42.2.1'
-    }
-
-    doLast {
-        def sqlClassLoader = Sql.classLoader
-        configurations.jdbc.each { sqlClassLoader.addURL it.toURI().toURL() }
-        def props = [user: (String) project.property("username"), password: (String) project.property("password"), allowMultiQueries: 'true'] as Properties
-        def url = (String) project.property("url")
-        def driver = 'org.postgresql.Driver'
-        def sql = Sql.newInstance(url, props, driver)
-        fileTree(dir: sqlDir, include: "**.sql").each {
-            sql.execute(it.text)
-        }
-        sql.close()
-    }
+flyway {
+    url = (String) project.property("url")
+    user = (String) project.property("username")
+    password = (String) project.property("password")
+    locations = ["filesystem:$project.projectDir/src/main/resources/db"]
+    table = 'flyway_schema_history'
 }
+generateJooq.dependsOn flywayClean
+generateJooq.dependsOn flywayMigrate
