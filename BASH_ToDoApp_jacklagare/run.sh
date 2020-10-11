@@ -81,6 +81,7 @@ showAll(){
 
 while [ "$choice" != '6' ]
 do
+    echo '=============================================================='
     echo 'Hello! This is a Todo App using Bash and CockroachDb!'
     echo 'To begin, please choose an action: '
     echo '[1] Create a new task'
@@ -89,7 +90,8 @@ do
     echo '[4] Delete task'
     echo '[5] Show all tasks'
     echo '[6] Exit'
-    echo
+    echo '=============================================================='
+    echo ''
     echo 'Enter number of your choice:'
     read -p '> ' choice
 
