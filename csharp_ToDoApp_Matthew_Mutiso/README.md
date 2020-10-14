@@ -8,7 +8,7 @@ Inorder to run the app succesfully, fulfil the following pre-requisites:-
 
 2. Visual studio 2019!
 
-2. A local `insecure` CockroachDB cluster listening on port `8080`. One may follow these [instructions](https://www.cockroachlabs.com/docs/stable/install-cockroachdb-windows.html). 
+2. A local `insecure` CockroachDB cluster listening on port `26257`. One may follow these [instructions](https://www.cockroachlabs.com/docs/stable/install-cockroachdb-windows.html). 
 
 3. The sample `bank` data used in this [tutorial](https://www.cockroachlabs.com/docs/stable/start-a-local-cluster-in-docker-mac.html#step-3-use-the-built-in-sql-client), i.e step 3
 
