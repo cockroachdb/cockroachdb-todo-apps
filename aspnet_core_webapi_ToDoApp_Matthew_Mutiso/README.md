@@ -1,18 +1,49 @@
-## Important note
+## CockroachDB To-Do App with C#, ASPNET.CORE 3.1 and Entity Framework core 
 
-Add the following header in a comment at the beginning of each source
-file, and fill in your name and the year.
+This app implements a sample IoT sink to receive weather information and feed it back via an API endpoint.
 
-   Copyright [yyyy] [name of copyright owner]
 
-   Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
-   You may obtain a copy of the License at
 
-       http://www.apache.org/licenses/LICENSE-2.0
+Inorder to run the app succesfully, fulfil the following pre-requisites:-
+1. [.Net core 3.1](https://dotnet.microsoft.com/download/dotnet-core/3.1)
 
-   Unless required by applicable law or agreed to in writing, software
-   distributed under the License is distributed on an "AS IS" BASIS,
-   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-   See the License for the specific language governing permissions and
-   limitations under the License.
+2. Visual studio 2019!
+
+3. A local `insecure` CockroachDB cluster listening on port `26257`. One may follow these [instructions](https://www.cockroachlabs.com/docs/stable/install-cockroachdb-windows.html). 
+
+4. Create the database and table with the following scripts
+
+```
+CREATE DATABASE weather;
+
+CREATE TABLE weather_entries
+(
+id UUID NOT NULL PRIMARY KEY,
+date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+temperature_c INT,
+summary VARCHAR(50)
+);
+```
+
+## Running
+
+Running the application loads the browser on the endpoint `/actualweather` but returns no data.
+
+## Input
+
+Using POSTMAN or any of your favourite web api client submit a POST request with the following requirements
+ - content-type -> `application/json`
+ - body ->  as below
+
+ ```
+ {
+	"TemperatureC" : 28,
+	"Summary": "mild"
+}
+ ```
+Using POSTMAN my setup looks like:
+![image](docs/images/postman.png)
+
+## Next steps
+
+This TO-DO app can be improved to include ODATA capabilities to the API allowing data querying.
