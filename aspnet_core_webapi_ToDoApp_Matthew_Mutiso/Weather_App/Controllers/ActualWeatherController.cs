@@ -14,28 +14,34 @@ namespace Weather_App.Controllers
         
 
         private readonly ILogger<ActualWeatherController> _logger;
-        private readonly CockroachDBContext _context;
+        private readonly Func<CockroachDBContext> _contextFactory;
 
-        public ActualWeatherController(ILogger<ActualWeatherController> logger, CockroachDBContext context)
+        public ActualWeatherController(ILogger<ActualWeatherController> logger, Func<CockroachDBContext> contextFactory)
         {
             _logger = logger;
-            _context = context ?? throw new ArgumentNullException(nameof(context));
+            _contextFactory = contextFactory ?? throw new ArgumentNullException(nameof(contextFactory));
         }
 
         [HttpGet]
         public IEnumerable<WeatherEntry> Get()
         {
-            var entries = _context.WeatherEntries.ToList();
+            using (var _context = _contextFactory())
+            {
+                var entries = _context.WeatherEntries.ToList();
 
-            return entries;
+                return entries;
+            }               
         }
 
         [HttpPost]
         public async Task<ActionResult<WeatherEntry>> Post(WeatherEntryApiModel model)
         {
             var entity = model.WeatherEntry;
-            _context.Add(entity);
-            await _context.SaveChangesAsync();
+            using (var _context = _contextFactory())
+            {
+                _context.Add(entity);
+                await _context.SaveChangesAsync();
+            }                
 
             return CreatedAtAction(nameof(Get), new { id = entity.Id },  entity);
         }

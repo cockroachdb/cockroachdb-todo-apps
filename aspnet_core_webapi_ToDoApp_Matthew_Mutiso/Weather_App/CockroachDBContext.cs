@@ -26,8 +26,8 @@ namespace Weather_App
 
                 props.Property(x => x.Id).HasColumnName("id");
                 props.Property(x => x.Date).HasColumnName("date");
-                props.Property(x => x.Id).HasColumnName("temperature_c");
-                props.Property(x => x.Id).HasColumnName("summary");
+                props.Property(x => x.TemperatureC).HasColumnName("temperature_c");
+                props.Property(x => x.Summary).HasColumnName("summary");
             });
         }
     }

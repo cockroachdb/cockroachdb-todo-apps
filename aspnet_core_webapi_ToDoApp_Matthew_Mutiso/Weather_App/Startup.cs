@@ -5,10 +5,12 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Npgsql;
 
 namespace Weather_App
 {
@@ -25,6 +27,12 @@ namespace Weather_App
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            string cockroachDbConnectionString = Configuration["ConnectionStrings:WeatherCockroachDatabase"];
+
+            DbContextOptionsBuilder<CockroachDBContext> optionsBuilder = new DbContextOptionsBuilder<CockroachDBContext>();
+            optionsBuilder.UseNpgsql(cockroachDbConnectionString);
+            Func<CockroachDBContext> dbContextFactory = () => new CockroachDBContext(optionsBuilder.Options);
+            services.AddSingleton(dbContextFactory);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
