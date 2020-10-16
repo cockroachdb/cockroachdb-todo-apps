@@ -1,0 +1,158 @@
+<!--Copyright [yyyy] [name of copyright owner]
+
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.--></Copyright>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<style>
+
+	body{
+		background-color:  #33cccc;
+	}
+	h1 {
+		text-align: center;
+		font-family:Tahoma;
+		font-weight:bold;
+	
+
+		}
+	input{
+		width: 100%;
+		padding: 12px 20px;
+		margin: 8px 0;
+		box-sizing: border-box;
+	}
+
+	input::placeholder {
+	  color: #d3d3d3;
+	}
+
+	
+	.center-column{
+		width:600px;
+		margin: 20px auto;
+		padding:20px;
+		background-color:#F5F5DC;
+		border-radius: 3px;
+		box-shadow: 6px 2px 30px 0px rgba(0,0,0,0.75);
+	}
+
+	.items{
+		background-color: #8FBC8F;
+		margin: 10px;
+		padding: 20px;
+		border-radius: 3px;
+		color: #000000;
+		font-size: 24px;
+		box-shadow: 0px -1px 10px -4px rgba(0,0,0,0.75);
+	}
+
+    .button{
+		color:#F0FFFF;
+		text-decoration: none;
+		display: block;
+		background: #008B8B;
+		border: solid 1px black;
+		box-shadow: 0px 10px 14px -7px #3e7327;
+		font-size:30px;
+		font-family:Georgia;
+		font-variant:small-caps;
+		font-weight:bold;
+	}
+
+	.deleteButton {
+        box-shadow: 0px 10px 14px -7px #3e7327;
+        background:linear-gradient(to bottom, #77b55a 5%, #72b352 100%);
+        background-color:#77b55a;
+        border-radius:4px;
+        border:1px solid #4b8f29;
+        display:inline-block;
+        cursor:pointer;
+        color:#ffffff;
+        font-family:Arial;
+        font-size:16px;
+        font-weight:bold;
+        padding:5px 20px;
+        text-decoration:none;
+        text-shadow:0px 1px 0px #5b8a3c;
+    }
+	
+	.elements-group{
+  		display:inline-block;
+	}
+
+	.tickButton {
+        box-shadow: 0px 10px 14px -7px #3e7327;
+        background:linear-gradient(to bottom, #77b55a 5%, #72b352 100%);
+        background-color:#77b55a;
+        border-radius:4px;
+        border:1px solid #4b8f29;
+        display:inline-block;
+        cursor:pointer;
+        color:#ffffff;
+        font-family:Arial;
+        font-size:18px;
+        font-weight:bold;
+        padding:5px 20px;
+        text-decoration:none;
+        text-shadow:0px 1px 0px #5b8a3c;
+    }
+  
+
+
+</style>
+<div class="center-column">
+
+    <h1> TO-DO List  </h1>
+    <h2> TASKS </h2>
+
+    <form action="/" method="POST">
+        {% csrf_token %}
+		{{form.text}}
+        <input class="button" type ="submit" name="Add">
+    </form>
+
+    <div>
+
+        {% for task in taskstodo %}
+        <div class="items">
+			
+			<div class="elements-group">
+
+				<form action ="{% url 'complete' task.id %}" class="elements-group method="POST">
+					{% csrf_token %}
+					<button name="submit" class="tickButton"> ✓ </button>
+				</form>
+
+
+				{% if task.complete == True %}
+				<strike  span style="color: #000000"> {{task}} </strike>
+				{% else %}
+				<span>{{task}}</span>
+				{% endif %}
+
+
+				<a href="{% url 'edit' task.id %}" style="color:#ffbf80"> [ Edit ] </a>
+
+			
+
+				
+				<form action ="{% url 'delete' task.id %}" class="elements-group method="POST">
+					{% csrf_token %}
+					<button name="submit" class="deleteButton" > DELETE </button>
+				</form>
+			</div>
+			
+	
+			
+        </div>
+    
+        {% endfor %}
+    </div>
+
+</div>
+
+
