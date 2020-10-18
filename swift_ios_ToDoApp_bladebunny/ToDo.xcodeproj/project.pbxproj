@@ -1,0 +1,462 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 52;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		225223C1253A8E8A00CC7563 /* ToDoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225223C0253A8E8900CC7563 /* ToDoApp.swift */; };
+		225223C5253A8F8600CC7563 /* ToDoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225223C4253A8F8600CC7563 /* ToDoViewModel.swift */; };
+		225223C8253AB6E700CC7563 /* ToDoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225223C7253AB6E700CC7563 /* ToDoView.swift */; };
+		2287DCAC253CAFE9004BDAE3 /* EditingToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2287DCAB253CAFE9004BDAE3 /* EditingToDo.swift */; };
+		22EE7263253942D900D5C694 /* ToDoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EE7262253942D900D5C694 /* ToDoListView.swift */; };
+		22EE7265253942DA00D5C694 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22EE7264253942DA00D5C694 /* Assets.xcassets */; };
+		22EE7268253942DA00D5C694 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22EE7267253942DA00D5C694 /* Preview Assets.xcassets */; };
+		22EE72782539447300D5C694 /* PostgresClientKit in Frameworks */ = {isa = PBXBuildFile; productRef = 22EE72772539447300D5C694 /* PostgresClientKit */; };
+		22EE727C2539571100D5C694 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EE727B2539571100D5C694 /* Repository.swift */; };
+		22EE727F2539577B00D5C694 /* RepositorySettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EE727E2539577B00D5C694 /* RepositorySettings.swift */; };
+		22EE72832539586300D5C694 /* RepositorySettings.json in Resources */ = {isa = PBXBuildFile; fileRef = 22EE72822539586300D5C694 /* RepositorySettings.json */; };
+		22EE728825395BF300D5C694 /* ToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EE728725395BF300D5C694 /* ToDo.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		225223C0253A8E8900CC7563 /* ToDoApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoApp.swift; sourceTree = "<group>"; };
+		225223C4253A8F8600CC7563 /* ToDoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoViewModel.swift; sourceTree = "<group>"; };
+		225223C7253AB6E700CC7563 /* ToDoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoView.swift; sourceTree = "<group>"; };
+		2287DCAB253CAFE9004BDAE3 /* EditingToDo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingToDo.swift; sourceTree = "<group>"; };
+		22EE725D253942D900D5C694 /* ToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		22EE7262253942D900D5C694 /* ToDoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListView.swift; sourceTree = "<group>"; };
+		22EE7264253942DA00D5C694 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		22EE7267253942DA00D5C694 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		22EE7269253942DA00D5C694 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		22EE727B2539571100D5C694 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		22EE727E2539577B00D5C694 /* RepositorySettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositorySettings.swift; sourceTree = "<group>"; };
+		22EE72822539586300D5C694 /* RepositorySettings.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RepositorySettings.json; sourceTree = "<group>"; };
+		22EE728725395BF300D5C694 /* ToDo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDo.swift; sourceTree = "<group>"; };
+		22EE728C253971C500D5C694 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		22EE725A253942D900D5C694 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22EE72782539447300D5C694 /* PostgresClientKit in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2287DCAA253CAFBB004BDAE3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				225223C4253A8F8600CC7563 /* ToDoViewModel.swift */,
+				2287DCAB253CAFE9004BDAE3 /* EditingToDo.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		22EE7254253942D900D5C694 = {
+			isa = PBXGroup;
+			children = (
+				22EE728C253971C500D5C694 /* README.md */,
+				22EE725F253942D900D5C694 /* ToDo */,
+				22EE725E253942D900D5C694 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		22EE725E253942D900D5C694 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				22EE725D253942D900D5C694 /* ToDo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		22EE725F253942D900D5C694 /* ToDo */ = {
+			isa = PBXGroup;
+			children = (
+				22EE7271253942F500D5C694 /* App */,
+				22EE727A2539449E00D5C694 /* Repository */,
+				22EE7270253942E900D5C694 /* Views */,
+				2287DCAA253CAFBB004BDAE3 /* ViewModel */,
+				22EE72722539430100D5C694 /* Resources */,
+				22EE7266253942DA00D5C694 /* Preview Content */,
+			);
+			path = ToDo;
+			sourceTree = "<group>";
+		};
+		22EE7266253942DA00D5C694 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				22EE7267253942DA00D5C694 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		22EE7270253942E900D5C694 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				22EE7262253942D900D5C694 /* ToDoListView.swift */,
+				225223C7253AB6E700CC7563 /* ToDoView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		22EE7271253942F500D5C694 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				225223C0253A8E8900CC7563 /* ToDoApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		22EE72722539430100D5C694 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				22EE72812539583D00D5C694 /* JSON */,
+				22EE72732539431700D5C694 /* Assets */,
+				22EE72742539432200D5C694 /* Plists */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		22EE72732539431700D5C694 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				22EE7264253942DA00D5C694 /* Assets.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		22EE72742539432200D5C694 /* Plists */ = {
+			isa = PBXGroup;
+			children = (
+				22EE7269253942DA00D5C694 /* Info.plist */,
+			);
+			path = Plists;
+			sourceTree = "<group>";
+		};
+		22EE727A2539449E00D5C694 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				22EE728625395BD800D5C694 /* Models */,
+				22EE727B2539571100D5C694 /* Repository.swift */,
+				22EE727E2539577B00D5C694 /* RepositorySettings.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		22EE72812539583D00D5C694 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				22EE72822539586300D5C694 /* RepositorySettings.json */,
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
+		22EE728625395BD800D5C694 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				22EE728725395BF300D5C694 /* ToDo.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		22EE725C253942D900D5C694 /* ToDo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 22EE726C253942DA00D5C694 /* Build configuration list for PBXNativeTarget "ToDo" */;
+			buildPhases = (
+				22EE7259253942D900D5C694 /* Sources */,
+				22EE725A253942D900D5C694 /* Frameworks */,
+				22EE725B253942D900D5C694 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ToDo;
+			packageProductDependencies = (
+				22EE72772539447300D5C694 /* PostgresClientKit */,
+			);
+			productName = ToDo;
+			productReference = 22EE725D253942D900D5C694 /* ToDo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		22EE7255253942D900D5C694 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1200;
+				LastUpgradeCheck = 1200;
+				TargetAttributes = {
+					22EE725C253942D900D5C694 = {
+						CreatedOnToolsVersion = 12.0.1;
+					};
+				};
+			};
+			buildConfigurationList = 22EE7258253942D900D5C694 /* Build configuration list for PBXProject "ToDo" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 22EE7254253942D900D5C694;
+			packageReferences = (
+				22EE72762539447200D5C694 /* XCRemoteSwiftPackageReference "PostgresClientKit" */,
+			);
+			productRefGroup = 22EE725E253942D900D5C694 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				22EE725C253942D900D5C694 /* ToDo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		22EE725B253942D900D5C694 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22EE7268253942DA00D5C694 /* Preview Assets.xcassets in Resources */,
+				22EE72832539586300D5C694 /* RepositorySettings.json in Resources */,
+				22EE7265253942DA00D5C694 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		22EE7259253942D900D5C694 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22EE7263253942D900D5C694 /* ToDoListView.swift in Sources */,
+				22EE728825395BF300D5C694 /* ToDo.swift in Sources */,
+				225223C1253A8E8A00CC7563 /* ToDoApp.swift in Sources */,
+				22EE727F2539577B00D5C694 /* RepositorySettings.swift in Sources */,
+				225223C8253AB6E700CC7563 /* ToDoView.swift in Sources */,
+				225223C5253A8F8600CC7563 /* ToDoViewModel.swift in Sources */,
+				2287DCAC253CAFE9004BDAE3 /* EditingToDo.swift in Sources */,
+				22EE727C2539571100D5C694 /* Repository.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		22EE726A253942DA00D5C694 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		22EE726B253942DA00D5C694 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		22EE726D253942DA00D5C694 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"ToDo/Preview Content\"";
+				DEVELOPMENT_TEAM = 383S252672;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = ToDo/Resources/Plists/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.rustydog.apps.ToDo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		22EE726E253942DA00D5C694 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"ToDo/Preview Content\"";
+				DEVELOPMENT_TEAM = 383S252672;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = ToDo/Resources/Plists/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.rustydog.apps.ToDo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		22EE7258253942D900D5C694 /* Build configuration list for PBXProject "ToDo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22EE726A253942DA00D5C694 /* Debug */,
+				22EE726B253942DA00D5C694 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		22EE726C253942DA00D5C694 /* Build configuration list for PBXNativeTarget "ToDo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22EE726D253942DA00D5C694 /* Debug */,
+				22EE726E253942DA00D5C694 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		22EE72762539447200D5C694 /* XCRemoteSwiftPackageReference "PostgresClientKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/codewinsdotcom/PostgresClientKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.3.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		22EE72772539447300D5C694 /* PostgresClientKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22EE72762539447200D5C694 /* XCRemoteSwiftPackageReference "PostgresClientKit" */;
+			productName = PostgresClientKit;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 22EE7255253942D900D5C694 /* Project object */;
+}
