@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>UpdateTask!</title>
+        <link rel="stylesheet" href="/static/todolist/style.css">
+    </head>
+    <body>
+        <h1 style="color:rgb(22, 21, 21);">Update Task</h1>
+        
+        <form method="POST"> 
+            
+            {% csrf_token %} 
+            {{ form.as_p }} 
+            <br></br>
+            <input type="submit" value="Update"> 
+        </form> 
+    </body>
+</html>
+

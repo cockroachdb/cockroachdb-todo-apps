@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>AddTask!</title>
+        <link rel="stylesheet" href="/static/todolist/style.css">
+    </head>
+    <body>
+        <h1 style="color:rgb(22, 21, 21);">Add a new Task</h1>
+        <form method="post">
+            <table>
+                {{form}}
+            </table>
+            {% csrf_token %}
+            <br></br>
+            <button type="submit">ADD</button>
+        </form>
+    </body>
+</html>

@@ -1,0 +1,13 @@
+body{
+    display:flex; flex-direction:column; justify-content:center;
+    min-height:50vh;
+    width: 700px;
+    margin: 80px auto;
+    padding-left: 50px;
+    border: 60px solid rgb(22, 21, 21);
+    font-family: sans-serif;
+    background-color: rgb(59, 57, 57);
+    
+    
+}
+
