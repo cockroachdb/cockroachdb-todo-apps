@@ -6,3 +6,4 @@ class Task(models.Model):
     title = models.CharField(max_length=250)
     date = models.DateField()
     status = models.CharField(max_length=1)
+    
