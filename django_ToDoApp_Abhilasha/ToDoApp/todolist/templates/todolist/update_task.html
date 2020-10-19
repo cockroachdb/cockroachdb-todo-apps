@@ -1,0 +1,29 @@
+<!-- Copyright [2020] [Abhilasha Sinha]
+
+Licensed under the Apache License, Version 2.0 (the "License"); 
+you may not use this file except in compliance with the License. 
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+Unless required by applicable law or agreed to in writing, 
+software distributed under the License is distributed on an "AS IS" BASIS, 
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+See the License for the specific language governing permissions and limitations under the License.
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>UpdateTask!</title>
+        <link rel="stylesheet" href="/static/todolist/style.css">
+    </head>
+    <body>
+        <h1 style="color:rgb(22, 21, 21);">Update Task</h1>
+        <form method="POST"> 
+            {% csrf_token %} 
+            {{ form.as_p }} 
+            <br></br>
+            <input type="submit" value="Update"> 
+        </form> 
+    </body>
+</html>

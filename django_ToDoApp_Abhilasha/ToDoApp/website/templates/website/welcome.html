@@ -1,0 +1,42 @@
+<!-- Copyright [2020] [Abhilasha Sinha]
+
+Licensed under the Apache License, Version 2.0 (the "License"); 
+you may not use this file except in compliance with the License. 
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+Unless required by applicable law or agreed to in writing, 
+software distributed under the License is distributed on an "AS IS" BASIS, 
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+See the License for the specific language governing permissions and limitations under the License.
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Welcome!</title>
+        <link rel="stylesheet" href="/static/website/style.css">
+    </head>
+    <body>
+        <h1 style="color:rgb(109, 99, 99)">Welcome to ToDo App!</h1>
+        <h2 style="color:rgb(109, 99, 99)">Tasks</h2>
+        <ul>
+            {% for task in tasks %}
+            <li>
+                {% if task.status == 'Y' %}
+                <p1 style="color:rgb(121, 211, 151);">
+                    {{task.title}} | {{task.date}} | Done <a href="{% url 'update_task' task.id %}">Update</a>
+                </p1>
+                <br></br>
+                {% else %}
+                <p2 style="color:rgb(231, 131, 131);">
+                    {{task.title}} | {{task.date}} | Pending <a href="{% url 'update_task' task.id %}">Update</a>
+                </p2>
+                <br></br>
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+        <p><a href="{% url 'new_task' %}">Add New Task</a></p>
+    </body>
+</html>
