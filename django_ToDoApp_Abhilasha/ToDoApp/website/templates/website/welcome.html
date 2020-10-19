@@ -16,7 +16,6 @@
                     {{task.title}} | {{task.date}} | Done <a href="{% url 'update_task' task.id %}">Update</a>
                 </p1>
                 <br></br>
-                
                 {% else %}
                 <p2 style="color:rgb(231, 131, 131);">
                     {{task.title}} | {{task.date}} | Pending <a href="{% url 'update_task' task.id %}">Update</a>
@@ -27,6 +26,5 @@
             {% endfor %}
         </ul>
         <p><a href="{% url 'new_task' %}">Add New Task</a></p>
-        
     </body>
 </html>

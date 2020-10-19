@@ -7,9 +7,7 @@
     </head>
     <body>
         <h1 style="color:rgb(22, 21, 21);">Update Task</h1>
-        
         <form method="POST"> 
-            
             {% csrf_token %} 
             {{ form.as_p }} 
             <br></br>
@@ -17,4 +15,3 @@
         </form> 
     </body>
 </html>
-
