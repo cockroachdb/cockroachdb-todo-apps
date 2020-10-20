@@ -1,0 +1,30 @@
+I201020 19:59:06.476060 1 util/log/sync_buffer.go:70  [config] file created at: 2020/10/20 19:59:06
+I201020 19:59:06.476060 1 util/log/sync_buffer.go:70  [config] running on machine: Gideon
+I201020 19:59:06.476060 1 util/log/sync_buffer.go:70  [config] binary: CockroachDB CCL v20.1.6 (x86_64-unknown-linux-gnu, built 2020/09/24 18:16:45, go1.13.9)
+I201020 19:59:06.476060 1 util/log/sync_buffer.go:70  [config] arguments: [cockroach start]
+I201020 19:59:06.476060 1 util/log/sync_buffer.go:70  line format: [IWEF]yymmdd hh:mm:ss.uuuuuu goid file:line msg utf8=✓
+I201020 19:59:06.476051 1 cli/start.go:1223  logging to directory /mnt/d/HacktoberFest/todo/todo_app/cockroach-data/logs
+I201020 19:59:06.583354 1 server/status/recorder.go:597  available memory from cgroups (0 B) is unsupported, using system memory 7.8 GiB instead: no cgroup memory controller detected
+W201020 19:59:06.584437 1 cli/start.go:1144  Using the default setting for --cache (128 MiB).
+  A significantly larger value is usually needed for good performance.
+  If you have a dedicated server a reasonable setting is --cache=.25 (2.0 GiB).
+I201020 19:59:06.585226 1 server/status/recorder.go:597  available memory from cgroups (0 B) is unsupported, using system memory 7.8 GiB instead: no cgroup memory controller detected
+I201020 19:59:06.585273 1 cli/start.go:1286  CockroachDB CCL v20.1.6 (x86_64-unknown-linux-gnu, built 2020/09/24 18:16:45, go1.13.9)
+W201020 19:59:06.596040 1 cli/start.go:548  running 'cockroach start' without --join is deprecated.
+Consider using 'cockroach start-single-node' or 'cockroach init' instead.
+I201020 19:59:06.627984 1 server/status/recorder.go:597  available memory from cgroups (0 B) is unsupported, using system memory 7.8 GiB instead: no cgroup memory controller detected
+I201020 19:59:06.628856 1 server/config.go:404  system total memory: 7.8 GiB
+I201020 19:59:06.629023 1 server/config.go:406  server configuration:
+max offset             500000000
+cache size             128 MiB
+SQL memory pool size   2.0 GiB
+scan interval          10m0s
+scan min idle time     10ms
+scan max idle time     1s
+event log enabled      true
+I201020 19:59:06.629112 1 cli/start.go:1129  process identity: uid 1000 euid 1000 gid 1000 egid 1000
+I201020 19:59:06.650134 1 cli/start.go:697  starting cockroach node
+E201020 19:59:06.708446 1 cli/error.go:373  ERROR: cannot load certificates.
+Check your certificate settings, set --certs-dir, or use --insecure for insecure clusters.
+
+failed to start server: problem with CA certificate: not found
