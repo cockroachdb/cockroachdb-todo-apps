@@ -1,0 +1,181 @@
+I201020 19:59:12.959292 1 util/log/sync_buffer.go:70  [config] file created at: 2020/10/20 19:59:12
+I201020 19:59:12.959292 1 util/log/sync_buffer.go:70  [config] running on machine: Gideon
+I201020 19:59:12.959292 1 util/log/sync_buffer.go:70  [config] binary: CockroachDB CCL v20.1.6 (x86_64-unknown-linux-gnu, built 2020/09/24 18:16:45, go1.13.9)
+I201020 19:59:12.959292 1 util/log/sync_buffer.go:70  [config] arguments: [cockroach start --insecure]
+I201020 19:59:12.959292 1 util/log/sync_buffer.go:70  line format: [IWEF]yymmdd hh:mm:ss.uuuuuu goid file:line msg utf8=✓
+I201020 19:59:12.959284 1 cli/start.go:1223  logging to directory /mnt/d/HacktoberFest/todo/todo_app/cockroach-data/logs
+W201020 19:59:13.068561 1 cli/start.go:1272  RUNNING IN INSECURE MODE!
+
+- Your cluster is open for any client that can access <all your IP addresses>.
+- Any user, even root, can log in without providing a password.
+- Any user, connecting as root, can read or write any data in your cluster.
+- There is no network encryption nor authentication, and thus no confidentiality.
+
+Check out how to secure your cluster: https://www.cockroachlabs.com/docs/v20.1/secure-a-cluster.html
+I201020 19:59:13.069228 1 server/status/recorder.go:597  available memory from cgroups (0 B) is unsupported, using system memory 7.8 GiB instead: no cgroup memory controller detected
+W201020 19:59:13.069296 1 cli/start.go:1144  Using the default setting for --cache (128 MiB).
+  A significantly larger value is usually needed for good performance.
+  If you have a dedicated server a reasonable setting is --cache=.25 (2.0 GiB).
+I201020 19:59:13.069682 1 server/status/recorder.go:597  available memory from cgroups (0 B) is unsupported, using system memory 7.8 GiB instead: no cgroup memory controller detected
+I201020 19:59:13.069716 1 cli/start.go:1286  CockroachDB CCL v20.1.6 (x86_64-unknown-linux-gnu, built 2020/09/24 18:16:45, go1.13.9)
+W201020 19:59:13.075396 1 cli/start.go:548  running 'cockroach start' without --join is deprecated.
+Consider using 'cockroach start-single-node' or 'cockroach init' instead.
+I201020 19:59:13.100607 1 server/status/recorder.go:597  available memory from cgroups (0 B) is unsupported, using system memory 7.8 GiB instead: no cgroup memory controller detected
+I201020 19:59:13.100672 1 server/config.go:404  system total memory: 7.8 GiB
+I201020 19:59:13.100797 1 server/config.go:406  server configuration:
+max offset             500000000
+cache size             128 MiB
+SQL memory pool size   2.0 GiB
+scan interval          10m0s
+scan min idle time     10ms
+scan max idle time     1s
+event log enabled      true
+I201020 19:59:13.100864 1 cli/start.go:1129  process identity: uid 1000 euid 1000 gid 1000 egid 1000
+I201020 19:59:13.101434 1 cli/start.go:697  starting cockroach node
+I201020 19:59:13.131124 68 storage/rocksdb.go:606  opening rocksdb instance at "/mnt/d/HacktoberFest/todo/todo_app/cockroach-data/cockroach-temp506536204"
+E201020 19:59:13.473363 68 server/status/runtime.go:326  [n?] could not get initial disk IO counters: open /proc/diskstats: no such file or directory
+I201020 19:59:13.586562 68 server/server.go:1071  [n?] monitoring forward clock jumps based on server.clock.forward_jump_check_enabled
+I201020 19:59:13.594970 68 storage/rocksdb.go:606  opening rocksdb instance at "/mnt/d/HacktoberFest/todo/todo_app/cockroach-data"
+I201020 19:59:13.830565 68 server/config.go:578  [n?] 1 storage engine initialized
+I201020 19:59:13.830609 68 server/config.go:581  [n?] RocksDB cache size: 128 MiB
+I201020 19:59:13.830633 68 server/config.go:581  [n?] store 0: RocksDB, max size 0 B, max open file limit 10000
+I201020 19:59:13.875571 68 server/server.go:1539  [n?] no stores bootstrapped and --join flag specified, awaiting init command or join with an already initialized node.
+I201020 19:59:13.875716 68 server/server.go:1549  [n?] **** add additional nodes by specifying --join=Gideon:26257
+W201020 19:59:13.881684 113 cli/start.go:1068  neither --listen-addr nor --advertise-addr was specified.
+The server will advertise "Gideon" to other nodes, is this routable?
+
+Consider using:
+- for local-only servers:  --listen-addr=localhost
+- for multi-node clusters: --advertise-addr=<host/IP addr>
+I201020 19:59:14.012243 68 server/node.go:324  [n?] **** cluster eaff990a-f269-4830-a5b7-f2b61b844f47 has been created
+I201020 19:59:14.016224 68 gossip/gossip.go:395  [n1] NodeDescriptor set to node_id:1 address:<network_field:"tcp" address_field:"Gideon:26257" > attrs:<> locality:<> ServerVersion:<major_val:20 minor_val:1 patch:0 unstable:0 > build_tag:"v20.1.6" started_at:1603223954012677400 cluster_name:"" sql_address:<network_field:"tcp" address_field:"Gideon:26257" > 
+W201020 19:59:14.099697 221 kv/kvserver/store.go:1631  [n1,s1,r6/1:/Table/{SystemCon…-11}] could not gossip system config: [NotLeaseHolderError] r6: replica (n1,s1):1 not lease holder; lease holder unknown
+I201020 19:59:14.110890 68 server/node.go:428  [n1] initialized store [n1,s1]: disk (capacity=932 GiB, available=482 GiB, used=80 KiB, logicalBytes=16 KiB), ranges=32, leases=0, queries=0.00, writes=0.00, bytesPerReplica={p10=0.00 p25=0.00 p50=0.00 p75=0.00 p90=166.00 pMax=13304.00}, writesPerReplica={p10=0.00 p25=0.00 p50=0.00 p75=0.00 p90=0.00 pMax=0.00}
+I201020 19:59:14.111459 68 kv/kvserver/stores.go:247  [n1] read 0 node addresses from persistent storage
+I201020 19:59:14.111927 68 server/node.go:649  [n1] connecting to gossip network to verify cluster ID...
+I201020 19:59:14.112030 68 server/node.go:669  [n1] node connected via gossip and verified as part of cluster "eaff990a-f269-4830-a5b7-f2b61b844f47"
+I201020 19:59:14.112299 68 server/node.go:512  [n1] node=1: started with [<no-attributes>=/mnt/d/HacktoberFest/todo/todo_app/cockroach-data] engine(s) and attributes []
+I201020 19:59:14.119505 242 sql/temporary_schema.go:452  [n1] skipping temporary object cleanup run as it is not the leaseholder
+I201020 19:59:14.119588 242 sql/temporary_schema.go:453  [n1] completed temporary object cleanup job
+I201020 19:59:14.119678 242 sql/temporary_schema.go:575  [n1] temporary object cleaner next scheduled to run at 2020-10-20 20:29:14.1156326 +0000 UTC
+I201020 19:59:14.119953 68 server/server.go:1656  [n1] starting http server at [::]:8080 (use: Gideon:8080)
+I201020 19:59:14.120036 68 server/server.go:1663  [n1] starting grpc/postgres server at [::]:26257
+I201020 19:59:14.120176 68 server/server.go:1664  [n1] advertising CockroachDB node at Gideon:26257
+W201020 19:59:14.154736 221 kv/kvserver/store.go:1631  [n1,s1,r6/1:/Table/{SystemCon…-11}] could not gossip system config: [NotLeaseHolderError] r6: replica (n1,s1):1 not lease holder; lease holder unknown
+I201020 19:59:14.278623 81 sql/event_log.go:132  [n1,intExec=optInToDiagnosticsStatReporting] Event: "set_cluster_setting", target: 0, info: {SettingName:diagnostics.reporting.enabled Value:true User:root}
+I201020 19:59:14.328055 261 sql/event_log.go:132  [n1,intExec=set-setting] Event: "set_cluster_setting", target: 0, info: {SettingName:version Value:20.1 User:root}
+I201020 19:59:14.415289 436 sql/event_log.go:132  [n1,intExec=initializeClusterSecret] Event: "set_cluster_setting", target: 0, info: {SettingName:cluster.secret Value:442fc7bf-9b48-49bc-846d-2d9735b0cf28 User:root}
+I201020 19:59:14.443443 718 sql/event_log.go:132  [n1,intExec=create-default-db] Event: "create_database", target: 50, info: {DatabaseName:defaultdb Statement:CREATE DATABASE IF NOT EXISTS defaultdb User:root}
+I201020 19:59:14.470799 756 sql/event_log.go:132  [n1,intExec=create-default-db] Event: "create_database", target: 51, info: {DatabaseName:postgres Statement:CREATE DATABASE IF NOT EXISTS postgres User:root}
+I201020 19:59:14.562131 68 server/server.go:1824  [n1] done ensuring all necessary migrations have run
+I201020 19:59:14.562207 68 server/server.go:2066  [n1] serving sql connections
+I201020 19:59:14.562437 68 cli/start.go:857  [config] clusterID: eaff990a-f269-4830-a5b7-f2b61b844f47
+I201020 19:59:14.562478 973 sqlmigrations/migrations.go:668  [n1] starting wait for upgrade finalization before schema change job migration
+I201020 19:59:14.562503 68 cli/start.go:866  node startup completed:
+CockroachDB node starting at 2020-10-20 19:59:14.5622808 +0000 UTC (took 1.6s)
+build:               CCL v20.1.6 @ 2020/09/24 18:16:45 (go1.13.9)
+webui:               http://Gideon:8080
+sql:                 postgresql://root@Gideon:26257?sslmode=disable
+RPC client flags:    cockroach <client cmd> --host=Gideon:26257 --insecure
+logs:                /mnt/d/HacktoberFest/todo/todo_app/cockroach-data/logs
+temp dir:            /mnt/d/HacktoberFest/todo/todo_app/cockroach-data/cockroach-temp506536204
+external I/O path:   /mnt/d/HacktoberFest/todo/todo_app/cockroach-data/extern
+store[0]:            path=/mnt/d/HacktoberFest/todo/todo_app/cockroach-data
+storage engine:      rocksdb
+status:              initialized new cluster
+clusterID:           eaff990a-f269-4830-a5b7-f2b61b844f47
+nodeID:              1
+I201020 19:59:14.563606 973 sqlmigrations/migrations.go:700  [n1] starting schema change job migration
+I201020 19:59:14.584837 971 server/server_update.go:55  [n1] no need to upgrade, cluster already at the newest version
+I201020 19:59:14.628976 973 sqlmigrations/migrations.go:1131  [schema-change-job-migration] evaluating tables for creating jobs
+I201020 19:59:14.629050 973 sqlmigrations/migrations.go:719  [n1] schema change job migration completed
+I201020 19:59:14.640800 974 sql/event_log.go:132  [n1] Event: "node_join", target: 1, info: {Descriptor:{NodeID:1 Address:Gideon:26257 Attrs: Locality: ServerVersion:20.1 BuildTag:v20.1.6 StartedAt:1603223954012677400 LocalityAddress:[] ClusterName: SQLAddress:Gideon:26257} ClusterID:eaff990a-f269-4830-a5b7-f2b61b844f47 StartedAt:1603223954012677400 LastUp:1603223954012677400}
+I201020 19:59:15.922924 111 gossip/gossip.go:1527  [n1] node has connected to cluster via gossip
+I201020 19:59:15.923372 111 kv/kvserver/stores.go:266  [n1] wrote 0 node addresses to persistent storage
+I201020 19:59:17.647992 976 server/updates.go:268  [n1] A new version is available: 20.1.7, details: https://www.cockroachlabs.com/docs/releases/v20.1.7.html
+W201020 19:59:24.135762 244 server/status/runtime.go:430  [n1] problem fetching disk stats: open /proc/diskstats: no such file or directory; disk stats will be empty.
+I201020 19:59:24.137538 244 server/status/runtime.go:498  [n1] runtime stats: 88 MiB RSS, 184 goroutines, 71 MiB/50 MiB/87 MiB GO alloc/idle/total, 15 MiB/20 MiB CGO alloc/total, 0.0 CGO/sec, 0.0/0.0 %(u/s)time, 0.0 %gc (8x), 0 B/0 B (r/w)net
+I201020 19:59:34.128740 62 kv/kvserver/store.go:2474  [n1,s1] sstables (read amplification = 0):
+I201020 19:59:34.129305 62 kv/kvserver/store.go:2475  [n1,s1] 
+** Compaction Stats [default] **
+Level    Files   Size     Score Read(GB)  Rn(GB) Rnp1(GB) Write(GB) Wnew(GB) Moved(GB) W-Amp Rd(MB/s) Wr(MB/s) Comp(sec) CompMergeCPU(sec) Comp(cnt) Avg(sec) KeyIn KeyDrop
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Sum      0/0    0.00 KB   0.0      0.0     0.0      0.0       0.0      0.0       0.0   0.0      0.0      0.0      0.00              0.00         0    0.000       0      0
+ Int      0/0    0.00 KB   0.0      0.0     0.0      0.0       0.0      0.0       0.0   0.0      0.0      0.0      0.00              0.00         0    0.000       0      0
+
+** Compaction Stats [default] **
+Priority    Files   Size     Score Read(GB)  Rn(GB) Rnp1(GB) Write(GB) Wnew(GB) Moved(GB) W-Amp Rd(MB/s) Wr(MB/s) Comp(sec) CompMergeCPU(sec) Comp(cnt) Avg(sec) KeyIn KeyDrop
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Uptime(secs): 20.4 total, 20.4 interval
+Flush(GB): cumulative 0.000, interval 0.000
+AddFile(GB): cumulative 0.000, interval 0.000
+AddFile(Total Files): cumulative 0, interval 0
+AddFile(L0 Files): cumulative 0, interval 0
+AddFile(Keys): cumulative 0, interval 0
+Cumulative compaction: 0.00 GB write, 0.00 MB/s write, 0.00 GB read, 0.00 MB/s read, 0.0 seconds
+Interval compaction: 0.00 GB write, 0.00 MB/s write, 0.00 GB read, 0.00 MB/s read, 0.0 seconds
+Stalls(count): 0 level0_slowdown, 0 level0_slowdown_with_compaction, 0 level0_numfiles, 0 level0_numfiles_with_compaction, 0 stop for pending_compaction_bytes, 0 slowdown for pending_compaction_bytes, 0 memtable_compaction, 0 memtable_slowdown, interval 0 total count
+estimated_pending_compaction_bytes: 0 B
+W201020 19:59:34.150330 244 server/status/runtime.go:430  [n1] problem fetching disk stats: open /proc/diskstats: no such file or directory; disk stats will be empty.
+I201020 19:59:34.151132 244 server/status/runtime.go:498  [n1] runtime stats: 95 MiB RSS, 184 goroutines, 80 MiB/40 MiB/96 MiB GO alloc/idle/total, 15 MiB/20 MiB CGO alloc/total, 88.1 CGO/sec, 2.9/1.5 %(u/s)time, 0.0 %gc (0x), 0 B/0 B (r/w)net
+I201020 19:59:35.357298 1281 kv/kvserver/replica_consistency.go:246  [n1,consistencyChecker,s1,r4/1:/System{/tsd-tse}] triggering stats recomputation to resolve delta of {ContainsEstimates:4314 LastUpdateNanos:1603223974272361800 IntentAge:0 GCBytesAge:0 LiveBytes:18587 LiveCount:-692 KeyBytes:-33660 KeyCount:-692 ValBytes:52247 ValCount:-692 IntentBytes:0 IntentCount:0 SysBytes:0 SysCount:0}
+W201020 19:59:44.156671 244 server/status/runtime.go:430  [n1] problem fetching disk stats: open /proc/diskstats: no such file or directory; disk stats will be empty.
+I201020 19:59:44.157478 244 server/status/runtime.go:498  [n1] runtime stats: 100 MiB RSS, 184 goroutines, 55 MiB/62 MiB/98 MiB GO alloc/idle/total, 15 MiB/21 MiB CGO alloc/total, 234.4 CGO/sec, 2.6/1.1 %(u/s)time, 0.1 %gc (1x), 0 B/0 B (r/w)net
+W201020 19:59:54.156573 244 server/status/runtime.go:430  [n1] problem fetching disk stats: open /proc/diskstats: no such file or directory; disk stats will be empty.
+I201020 19:59:54.157122 244 server/status/runtime.go:498  [n1] runtime stats: 100 MiB RSS, 185 goroutines, 63 MiB/55 MiB/98 MiB GO alloc/idle/total, 15 MiB/21 MiB CGO alloc/total, 46.6 CGO/sec, 0.8/1.4 %(u/s)time, 0.0 %gc (0x), 0 B/0 B (r/w)net
+W201020 20:00:04.158626 244 server/status/runtime.go:430  [n1] problem fetching disk stats: open /proc/diskstats: no such file or directory; disk stats will be empty.
+I201020 20:00:04.159078 244 server/status/runtime.go:498  [n1] runtime stats: 102 MiB RSS, 187 goroutines, 70 MiB/49 MiB/98 MiB GO alloc/idle/total, 15 MiB/21 MiB CGO alloc/total, 30.1 CGO/sec, 1.6/0.7 %(u/s)time, 0.0 %gc (0x), 0 B/0 B (r/w)net
+I201020 20:00:14.124146 63 gossip/gossip.go:567  [n1] gossip status (ok, 1 node)
+gossip client (0/3 cur/max conns)
+gossip server (0/3 cur/max conns, infos 0/0 sent/received, bytes 0B/0B sent/received)
+gossip connectivity
+  n1 [sentinel];
+W201020 20:00:14.171841 244 server/status/runtime.go:430  [n1] problem fetching disk stats: open /proc/diskstats: no such file or directory; disk stats will be empty.
+I201020 20:00:14.172594 244 server/status/runtime.go:498  [n1] runtime stats: 106 MiB RSS, 191 goroutines, 78 MiB/42 MiB/98 MiB GO alloc/idle/total, 15 MiB/21 MiB CGO alloc/total, 57.9 CGO/sec, 1.8/0.9 %(u/s)time, 0.0 %gc (0x), 0 B/0 B (r/w)net
+W201020 20:00:24.182709 244 server/status/runtime.go:430  [n1] problem fetching disk stats: open /proc/diskstats: no such file or directory; disk stats will be empty.
+I201020 20:00:24.183381 244 server/status/runtime.go:498  [n1] runtime stats: 109 MiB RSS, 188 goroutines, 84 MiB/36 MiB/100 MiB GO alloc/idle/total, 15 MiB/21 MiB CGO alloc/total, 43.9 CGO/sec, 1.8/0.8 %(u/s)time, 0.0 %gc (0x), 0 B/0 B (r/w)net
+W201020 20:00:34.194085 244 server/status/runtime.go:430  [n1] problem fetching disk stats: open /proc/diskstats: no such file or directory; disk stats will be empty.
+I201020 20:00:34.194992 244 server/status/runtime.go:498  [n1] runtime stats: 115 MiB RSS, 188 goroutines, 51 MiB/65 MiB/108 MiB GO alloc/idle/total, 15 MiB/22 MiB CGO alloc/total, 27.6 CGO/sec, 0.6/1.1 %(u/s)time, 0.0 %gc (1x), 0 B/0 B (r/w)net
+W201020 20:00:44.205094 244 server/status/runtime.go:430  [n1] problem fetching disk stats: open /proc/diskstats: no such file or directory; disk stats will be empty.
+I201020 20:00:44.205788 244 server/status/runtime.go:498  [n1] runtime stats: 115 MiB RSS, 189 goroutines, 58 MiB/59 MiB/108 MiB GO alloc/idle/total, 15 MiB/22 MiB CGO alloc/total, 28.0 CGO/sec, 1.1/1.7 %(u/s)time, 0.0 %gc (0x), 0 B/0 B (r/w)net
+W201020 20:00:54.221001 244 server/status/runtime.go:430  [n1] problem fetching disk stats: open /proc/diskstats: no such file or directory; disk stats will be empty.
+I201020 20:00:54.222073 244 server/status/runtime.go:498  [n1] runtime stats: 116 MiB RSS, 189 goroutines, 65 MiB/53 MiB/108 MiB GO alloc/idle/total, 15 MiB/22 MiB CGO alloc/total, 24.2 CGO/sec, 0.6/0.6 %(u/s)time, 0.0 %gc (0x), 0 B/0 B (r/w)net
+W201020 20:01:04.228121 244 server/status/runtime.go:430  [n1] problem fetching disk stats: open /proc/diskstats: no such file or directory; disk stats will be empty.
+I201020 20:01:04.229004 244 server/status/runtime.go:498  [n1] runtime stats: 116 MiB RSS, 189 goroutines, 71 MiB/47 MiB/108 MiB GO alloc/idle/total, 15 MiB/22 MiB CGO alloc/total, 25.9 CGO/sec, 1.6/1.0 %(u/s)time, 0.0 %gc (0x), 0 B/0 B (r/w)net
+I201020 20:01:14.126832 63 gossip/gossip.go:567  [n1] gossip status (ok, 1 node)
+gossip client (0/3 cur/max conns)
+gossip server (0/3 cur/max conns, infos 0/0 sent/received, bytes 0B/0B sent/received)
+W201020 20:01:14.236117 244 server/status/runtime.go:430  [n1] problem fetching disk stats: open /proc/diskstats: no such file or directory; disk stats will be empty.
+I201020 20:01:14.236668 244 server/status/runtime.go:498  [n1] runtime stats: 116 MiB RSS, 188 goroutines, 79 MiB/41 MiB/108 MiB GO alloc/idle/total, 15 MiB/22 MiB CGO alloc/total, 51.5 CGO/sec, 1.7/1.2 %(u/s)time, 0.0 %gc (0x), 0 B/0 B (r/w)net
+W201020 20:01:24.237674 244 server/status/runtime.go:430  [n1] problem fetching disk stats: open /proc/diskstats: no such file or directory; disk stats will be empty.
+I201020 20:01:24.238192 244 server/status/runtime.go:498  [n1] runtime stats: 118 MiB RSS, 188 goroutines, 86 MiB/35 MiB/108 MiB GO alloc/idle/total, 15 MiB/22 MiB CGO alloc/total, 28.6 CGO/sec, 1.1/1.9 %(u/s)time, 0.0 %gc (0x), 0 B/0 B (r/w)net
+W201020 20:01:34.242284 244 server/status/runtime.go:430  [n1] problem fetching disk stats: open /proc/diskstats: no such file or directory; disk stats will be empty.
+I201020 20:01:34.242731 244 server/status/runtime.go:498  [n1] runtime stats: 122 MiB RSS, 184 goroutines, 49 MiB/67 MiB/110 MiB GO alloc/idle/total, 15 MiB/22 MiB CGO alloc/total, 27.4 CGO/sec, 1.2/0.8 %(u/s)time, 0.0 %gc (1x), 0 B/0 B (r/w)net
+W201020 20:01:44.293015 244 server/status/runtime.go:430  [n1] problem fetching disk stats: open /proc/diskstats: no such file or directory; disk stats will be empty.
+I201020 20:01:44.293512 244 server/status/runtime.go:498  [n1] runtime stats: 122 MiB RSS, 185 goroutines, 56 MiB/62 MiB/110 MiB GO alloc/idle/total, 15 MiB/22 MiB CGO alloc/total, 31.2 CGO/sec, 1.0/0.6 %(u/s)time, 0.0 %gc (0x), 0 B/0 B (r/w)net
+W201020 20:01:54.274071 244 server/status/runtime.go:430  [n1] problem fetching disk stats: open /proc/diskstats: no such file or directory; disk stats will be empty.
+I201020 20:01:54.274951 244 server/status/runtime.go:498  [n1] runtime stats: 122 MiB RSS, 185 goroutines, 64 MiB/54 MiB/110 MiB GO alloc/idle/total, 15 MiB/22 MiB CGO alloc/total, 28.5 CGO/sec, 0.6/0.5 %(u/s)time, 0.0 %gc (0x), 0 B/0 B (r/w)net
+W201020 20:02:04.288235 244 server/status/runtime.go:430  [n1] problem fetching disk stats: open /proc/diskstats: no such file or directory; disk stats will be empty.
+I201020 20:02:04.288953 244 server/status/runtime.go:498  [n1] runtime stats: 123 MiB RSS, 187 goroutines, 71 MiB/47 MiB/110 MiB GO alloc/idle/total, 15 MiB/22 MiB CGO alloc/total, 25.6 CGO/sec, 0.9/0.3 %(u/s)time, 0.0 %gc (0x), 0 B/0 B (r/w)net
+I201020 20:02:14.127472 63 gossip/gossip.go:567  [n1] gossip status (ok, 1 node)
+gossip client (0/3 cur/max conns)
+gossip server (0/3 cur/max conns, infos 0/0 sent/received, bytes 0B/0B sent/received)
+W201020 20:02:14.299824 244 server/status/runtime.go:430  [n1] problem fetching disk stats: open /proc/diskstats: no such file or directory; disk stats will be empty.
+I201020 20:02:14.300979 244 server/status/runtime.go:498  [n1] runtime stats: 123 MiB RSS, 186 goroutines, 81 MiB/39 MiB/110 MiB GO alloc/idle/total, 15 MiB/22 MiB CGO alloc/total, 57.0 CGO/sec, 1.6/1.7 %(u/s)time, 0.0 %gc (0x), 0 B/0 B (r/w)net
+W201020 20:02:24.312199 244 server/status/runtime.go:430  [n1] problem fetching disk stats: open /proc/diskstats: no such file or directory; disk stats will be empty.
+I201020 20:02:24.312858 244 server/status/runtime.go:498  [n1] runtime stats: 124 MiB RSS, 186 goroutines, 88 MiB/33 MiB/110 MiB GO alloc/idle/total, 15 MiB/22 MiB CGO alloc/total, 28.2 CGO/sec, 0.6/0.5 %(u/s)time, 0.0 %gc (0x), 0 B/0 B (r/w)net
+W201020 20:02:34.325474 244 server/status/runtime.go:430  [n1] problem fetching disk stats: open /proc/diskstats: no such file or directory; disk stats will be empty.
+I201020 20:02:34.326121 244 server/status/runtime.go:498  [n1] runtime stats: 125 MiB RSS, 186 goroutines, 50 MiB/66 MiB/110 MiB GO alloc/idle/total, 15 MiB/22 MiB CGO alloc/total, 25.7 CGO/sec, 1.1/0.4 %(u/s)time, 0.0 %gc (1x), 0 B/0 B (r/w)net
+W201020 20:02:44.335629 244 server/status/runtime.go:430  [n1] problem fetching disk stats: open /proc/diskstats: no such file or directory; disk stats will be empty.
+I201020 20:02:44.336037 244 server/status/runtime.go:498  [n1] runtime stats: 125 MiB RSS, 185 goroutines, 57 MiB/61 MiB/110 MiB GO alloc/idle/total, 15 MiB/22 MiB CGO alloc/total, 30.3 CGO/sec, 1.1/0.5 %(u/s)time, 0.0 %gc (0x), 0 B/0 B (r/w)net
+W201020 20:02:54.338305 244 server/status/runtime.go:430  [n1] problem fetching disk stats: open /proc/diskstats: no such file or directory; disk stats will be empty.
+I201020 20:02:54.338626 244 server/status/runtime.go:498  [n1] runtime stats: 125 MiB RSS, 185 goroutines, 64 MiB/54 MiB/110 MiB GO alloc/idle/total, 15 MiB/22 MiB CGO alloc/total, 23.8 CGO/sec, 1.1/0.9 %(u/s)time, 0.0 %gc (0x), 0 B/0 B (r/w)net
+W201020 20:03:04.355138 244 server/status/runtime.go:430  [n1] problem fetching disk stats: open /proc/diskstats: no such file or directory; disk stats will be empty.
+I201020 20:03:04.355940 244 server/status/runtime.go:498  [n1] runtime stats: 126 MiB RSS, 185 goroutines, 71 MiB/48 MiB/110 MiB GO alloc/idle/total, 15 MiB/23 MiB CGO alloc/total, 29.1 CGO/sec, 0.6/0.5 %(u/s)time, 0.0 %gc (0x), 0 B/0 B (r/w)net
+I201020 20:03:14.115241 63 gossip/gossip.go:567  [n1] gossip status (ok, 1 node)
+gossip client (0/3 cur/max conns)
+gossip server (0/3 cur/max conns, infos 0/0 sent/received, bytes 0B/0B sent/received)
+W201020 20:03:14.365149 244 server/status/runtime.go:430  [n1] problem fetching disk stats: open /proc/diskstats: no such file or directory; disk stats will be empty.
+I201020 20:03:14.365782 244 server/status/runtime.go:498  [n1] runtime stats: 126 MiB RSS, 184 goroutines, 78 MiB/42 MiB/110 MiB GO alloc/idle/total, 15 MiB/23 MiB CGO alloc/total, 55.4 CGO/sec, 2.8/1.6 %(u/s)time, 0.0 %gc (0x), 0 B/0 B (r/w)net
+W201020 20:03:24.378506 244 server/status/runtime.go:430  [n1] problem fetching disk stats: open /proc/diskstats: no such file or directory; disk stats will be empty.
+I201020 20:03:24.379313 244 server/status/runtime.go:498  [n1] runtime stats: 126 MiB RSS, 184 goroutines, 85 MiB/36 MiB/110 MiB GO alloc/idle/total, 15 MiB/23 MiB CGO alloc/total, 19.4 CGO/sec, 0.8/0.3 %(u/s)time, 0.0 %gc (0x), 0 B/0 B (r/w)net

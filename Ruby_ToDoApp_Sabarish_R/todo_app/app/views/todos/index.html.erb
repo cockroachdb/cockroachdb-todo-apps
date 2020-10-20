@@ -1,0 +1,29 @@
+<p class="alert alert-primary"><%= notice %></p>
+
+<div class=".h2 lead text-center">Todos</div>
+
+<table class = "table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Completed</th>
+      <th colspan="3" class="text-center">Options</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @todos.each do |todo| %>
+      <tr>
+        <td><%= todo.name %></td>
+        <td><%= todo.completed %></td>
+        <td class="btn btn-default btn-sm"><%= link_to 'Show', todo %></td>
+        <td class="btn btn-default btn-sm"><%= link_to 'Edit', edit_todo_path(todo) %></td>
+        <td class="btn btn-default btn-sm"><%= link_to 'Delete', todo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<span class="btn btn-default btn-sm text-center"><%= link_to 'New Todo', new_todo_path %></span>
