@@ -44,6 +44,20 @@ Using POSTMAN or any of your favourite web api client submit a POST request with
 Using POSTMAN my setup looks like:
 ![image](docs/images/postman.png)
 
-## Next steps
+## OData
 
-This TO-DO app can be improved to include ODATA capabilities to the API allowing data querying.
+The latest version of the TO-DO app now supports [OData](https://www.odata.org/) natively. All HTTP requests are now queryable providing support for all OData operations. This support is implemented from the query string parameters down to the Entiy framework SQL query that is generated and sent to the Cockroach DB database.  
+
+Running the default request all the rows as shown:
+![image](docs/images/raw_query_odata.png)
+
+Modifying the request to pull only the `date` and `temperatureC` data points.
+![image](docs/images/sub_query_odata.png)
+
+As a matter of fact, you may as well simply query a specific entry. Assuming the model was a representation of customer accounts or devices, we can query a specific entry by the `id` as follows
+
+![image](docs/images/filter_query_odata.png)
+
+For a full range of operations supported by OData, please refer to the [OData Docs](https://www.odata.org/documentation/)
+
+** The url has been edited for readability. The final request needs to be url encoded before making the request.
