@@ -47,6 +47,7 @@ namespace Weather_App
             {
                 mvcOptions.EnableEndpointRouting = false;
             }).AddNewtonsoftJson();
+            services.AddOData();
 
             string cockroachDbConnectionString = Configuration["ConnectionStrings:WeatherCockroachDatabase"];
 
@@ -74,11 +75,12 @@ namespace Weather_App
             //});
             app.UseMvc(routeBuilder =>
             {
+                routeBuilder.EnableDependencyInjection();
                 var oDataBuilder = new ODataConventionModelBuilder();
                 oDataBuilder.EntitySet<WeatherEntry>("WeatherEntries");
-
+                routeBuilder.Select().Filter().Expand().MaxTop(128);
                 routeBuilder.MapODataServiceRoute("odata", "odata", oDataBuilder.GetEdmModel());
-                routeBuilder.EnableDependencyInjection();
+                
             });
         }
     }

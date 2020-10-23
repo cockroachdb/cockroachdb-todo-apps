@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNet.OData;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -39,14 +40,13 @@ namespace Weather_App.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<WeatherEntry> Get()
+        [EnableQuery]
+        public ActionResult<IQueryable<WeatherEntry>> Get()
         {
-            using (var _context = _contextFactory())
-            {
-                var entries = _context.WeatherEntries.ToList();
+            var _context = _contextFactory();
+            var entries = _context.WeatherEntries;
 
-                return entries;
-            }               
+            return entries;
         }
 
         [HttpPost]
