@@ -1,13 +1,18 @@
 package routes
 
-import "github.com/gin-gonic/gin"
+import (
+	"Go_ToDoApp_Gargi/handlers"
+
+	"github.com/gin-gonic/gin"
+)
 
 func SetRoutes() *gin.Engine {
 	router := gin.Default()
-	router.GET("")
-	router.GET("")
-	router.PUT("")
-	router.DELETE("")
-	router.POST("")
+	todos := router.Group("/todos")
+	todos.GET("/", handlers.GetAllTodoItems)
+	todos.PATCH("/:id", handlers.CheckTodoItem)
+	todos.PUT("/:id", handlers.UpdateTodoDescription)
+	todos.DELETE("/:id", handlers.DeleteTodoItem)
+	todos.POST("", handlers.AddTodoItems)
 	return router
 }

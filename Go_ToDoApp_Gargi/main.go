@@ -11,7 +11,3 @@ func main() {
 	//set up routes
 	routes.SetRoutes().Run(":8081")
 }
-
-func DbConn() {
-
-}
