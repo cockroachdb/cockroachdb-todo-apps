@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CockroachDB ToDo App</title>
+    <style>
+        body { font-family: sans-serif; max-width: 600px; margin: 2rem auto; padding: 0 1rem; }
+        h1 { text-align: center; }
+        .input-group { display: flex; gap: 10px; margin-bottom: 20px; }
+        input[type="text"] { flex-grow: 1; padding: 10px; font-size: 16px; }
+        button { padding: 10px 20px; cursor: pointer; background-color: #007bff; color: white; border: none; font-size: 16px; }
+        button:hover { background-color: #0056b3; }
+        ul { list-style: none; padding: 0; }
+        li { display: flex; align-items: center; justify-content: space-between; padding: 10px; border-bottom: 1px solid #eee; }
+        li.checked span { text-decoration: line-through; color: #888; }
+        .delete-btn { background-color: #dc3545; margin-left: 10px; padding: 5px 10px; font-size: 14px; }
+        .delete-btn:hover { background-color: #a71d2a; }
+    </style>
+</head>
+<body>
+    <h1>ToDo App</h1>
+    
+    <div class="input-group">
+        <input type="text" id="todoInput" placeholder="Add a new todo...">
+        <button onclick="addTodo()">Add</button>
+    </div>
+
+    <ul id="todoList"></ul>
+
+    <script>
+        const API_URL = 'http://localhost:8080';
+
+        async function fetchTodos() {
+            try {
+                const response = await fetch(`${API_URL}/get-todos`);
+                const todos = await response.json();
+                renderTodos(todos);
+            } catch (error) {
+                console.error('Error fetching todos:', error);
+            }
+        }
+
+        function renderTodos(todos) {
+            const list = document.getElementById('todoList');
+            list.innerHTML = '';
+            if (!todos) return;
+            
+            todos.forEach(todo => {
+                const li = document.createElement('li');
+                if (todo.checked) li.classList.add('checked');
+                
+                li.innerHTML = `
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <input type="checkbox" ${todo.checked ? 'checked' : ''} onchange="toggleTodo('${todo.id}', this.checked)">
+                        <span>${todo.text}</span>
+                    </div>
+                    <button class="delete-btn" onclick="deleteTodo('${todo.id}')">Delete</button>
+                `;
+                list.appendChild(li);
+            });
+        }
+
+        async function addTodo() {
+            const input = document.getElementById('todoInput');
+            const text = input.value.trim();
+            if (!text) return;
+
+            try {
+                await fetch(`${API_URL}/create-todo`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ text: text })
+                });
+                input.value = '';
+                fetchTodos();
+            } catch (error) {
+                console.error('Error adding todo:', error);
+            }
+        }
+
+        async function deleteTodo(id) {
+            try {
+                await fetch(`${API_URL}/delete-todo`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ id: id })
+                });
+                fetchTodos();
+            } catch (error) {
+                console.error('Error deleting todo:', error);
+            }
+        }
+
+        async function toggleTodo(id, checked) {
+            try {
+                await fetch(`${API_URL}/update-todo`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ id: id, checked: checked })
+                });
+                fetchTodos();
+            } catch (error) {
+                console.error('Error updating todo:', error);
+            }
+        }
+
+        // Initial fetch
+        fetchTodos();
+    </script>
+</body>
+</html>
